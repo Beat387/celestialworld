@@ -38,9 +38,11 @@
     <style>
     /*
         IMPORTANT:
-        You need to download all images previously hosted on blogger.googleusercontent.com,
-        rename them to the simplified names used in this file (e.g., "images/hero-background.jpg", "images/userimg_01.jpg"),
-        and place them in an "images" folder next to this index.html file.
+        1. Create an 'images' folder in the root of your project (next to this index.html file).
+        2. Download all image assets.
+        3. Rename them to the simplified names used in this file (e.g., "hero-background.jpg", "userimg_01.jpg", "contact-header-bg.jpg", "newsletter-bg.jpg", "category-flowers.jpg" etc.).
+        4. Place ALL these renamed image files into the 'images' folder.
+        5. Ensure filenames and extensions are EXACTLY THE SAME (CASE-SENSITIVE) as referenced in the HTML, CSS, and JavaScript.
     */
     body {
       font-family: 'Inter', sans-serif;
@@ -64,12 +66,11 @@
         backdrop-filter: blur(10px);
     }
 
-    /* Contact Page Header Background Image Specifics */
+    /* Header Background Image Overlay for non-home pages (Contact, About, etc.) */
     #site-header .header-bg-image-overlay-content {
         position: absolute;
         inset: 0;
-        /* Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipxXaMYqEdad_ba4SiK7LLLdBk_a5hIIeyG_L2bxINV7kkuewSpo7YHU3MEWDlFuOyjPllB0Jo0XTodoCCrcdsAsyhzWfADdi5IZfI99oG0zo583Sx-xpFyTtS0Z4wNcdjc9OmBfPksyUU1Z_snzJ2HuQsE9wpx4ChvHcIBMlfrX6PnzFwpoEi-2AmWXw/s1600/img%20(39).jpg */
-        background-image: url('images/contact-header-bg.jpg'); /* USER: RENAME your img (39).jpg to contact-header-bg.jpg and place in /images */
+        /* background-image is now set by JavaScript below using 'images/hero-background.jpg' */
         background-size: cover;
         background-position: center center;
         z-index: -1; /* Behind header content */
@@ -79,7 +80,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(0,0,0,0.6);
+        background-color: rgba(0,0,0,0.6); /* Adjust darkness as needed */
         z-index: 0; /* On top of image, behind content */
     }
 
@@ -215,10 +216,10 @@
     .image-modal.flex { display: flex; }
 
     #page-content-wrapper.contact-active,
-    #page-content-wrapper.about-active, /* Added for other pages */
+    #page-content-wrapper.about-active,
     #page-content-wrapper.privacy-active,
     #page-content-wrapper.terms-active {
-      padding-top: 76px; /* Apply padding only for these pages' main content */
+      padding-top: 76px; /* Apply padding only for these pages' main content when header is fixed */
     }
 
     </style>
@@ -231,17 +232,17 @@
   <div class="header-bg-image-overlay-content" id="header-bg-overlay-dynamic"></div> <!-- BG Image and Overlay container -->
   <div class="container mx-auto px-4 py-3 relative"> <!-- Header content container -->
     <div class="flex items-center justify-between">
-      <a href="index.html" class="flex items-center header-logo-link"> <!-- CHANGED href -->
+      <a href="index.html" class="flex items-center header-logo-link">
         <span class="text-2xl font-['Pacifico'] text-white">Celestial World</span>
       </a>
       <div class="hidden md:flex items-center space-x-8">
         <nav class="desktop-nav">
           <ul class="flex space-x-6">
-            <li><a href="index.html" class="text-white hover:text-primary transition-colors nav-item">Home</a></li> <!-- CHANGED href -->
-            <li><a href="#categories" class="text-white hover:text-primary transition-colors nav-item">Categories</a></li> <!-- CHANGED href -->
-            <li><a href="#gallery" class="text-white hover:text-primary transition-colors nav-item">Gallery</a></li> <!-- CHANGED href -->
-            <li><a href="#about" class="text-white hover:text-primary transition-colors nav-item">About</a></li> <!-- CHANGED href -->
-            <li><a href="#contact" class="text-white hover:text-primary transition-colors nav-item">Contact</a></li> <!-- CHANGED href -->
+            <li><a href="index.html" class="text-white hover:text-primary transition-colors nav-item">Home</a></li>
+            <li><a href="#categories" class="text-white hover:text-primary transition-colors nav-item">Categories</a></li>
+            <li><a href="#gallery" class="text-white hover:text-primary transition-colors nav-item">Gallery</a></li>
+            <li><a href="#about" class="text-white hover:text-primary transition-colors nav-item">About</a></li>
+            <li><a href="#contact" class="text-white hover:text-primary transition-colors nav-item">Contact</a></li>
           </ul>
         </nav>
         <div class="relative">
@@ -266,11 +267,11 @@
   <div id="mobile-menu" class="hidden md:hidden bg-gray-800/95 backdrop-blur-md">
     <nav class="container mx-auto px-4 py-4">
       <ul class="space-y-4">
-        <li><a href="index.html" class="block text-white hover:text-primary transition-colors nav-item">Home</a></li> <!-- CHANGED href -->
-        <li><a href="#categories" class="block text-white hover:text-primary transition-colors nav-item">Categories</a></li> <!-- CHANGED href -->
-        <li><a href="#gallery" class="block text-white hover:text-primary transition-colors nav-item">Gallery</a></li> <!-- CHANGED href -->
-        <li><a href="#about" class="block text-white hover:text-primary transition-colors nav-item">About</a></li> <!-- CHANGED href -->
-        <li><a href="#contact" class="block text-white hover:text-primary transition-colors nav-item">Contact</a></li> <!-- CHANGED href -->
+        <li><a href="index.html" class="block text-white hover:text-primary transition-colors nav-item">Home</a></li>
+        <li><a href="#categories" class="block text-white hover:text-primary transition-colors nav-item">Categories</a></li>
+        <li><a href="#gallery" class="block text-white hover:text-primary transition-colors nav-item">Gallery</a></li>
+        <li><a href="#about" class="block text-white hover:text-primary transition-colors nav-item">About</a></li>
+        <li><a href="#contact" class="block text-white hover:text-primary transition-colors nav-item">Contact</a></li>
       </ul>
       <div class="mt-4 relative">
         <input type="search" id="search-input-mobile" placeholder="Search..." class="bg-white/10 border-none rounded-full py-2 pl-10 pr-4 text-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary w-full">
@@ -300,7 +301,7 @@
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>
-        <a href="index.html" class="flex items-center mb-6"> <!-- CHANGED href -->
+        <a href="index.html" class="flex items-center mb-6">
           <span class="text-3xl font-['Pacifico'] text-white">Celestial World</span>
         </a>
         <p class="text-gray-400 mb-6">Discover and download stunning images of flowers, nature, and more for your projects.</p>
@@ -314,21 +315,21 @@
       <div>
         <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
         <ul class="space-y-3">
-          <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors nav-item">Home</a></li> <!-- CHANGED href -->
-          <li><a href="#categories" class="text-gray-400 hover:text-white transition-colors nav-item">Categories</a></li> <!-- CHANGED href -->
-          <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors nav-item">Gallery</a></li> <!-- CHANGED href -->
-          <li><a href="#about" class="text-gray-400 hover:text-white transition-colors nav-item">About Us</a></li> <!-- CHANGED href -->
-          <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors nav-item">Contact</a></li> <!-- CHANGED href -->
+          <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors nav-item">Home</a></li>
+          <li><a href="#categories" class="text-gray-400 hover:text-white transition-colors nav-item">Categories</a></li>
+          <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors nav-item">Gallery</a></li>
+          <li><a href="#about" class="text-gray-400 hover:text-white transition-colors nav-item">About Us</a></li>
+          <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors nav-item">Contact</a></li>
         </ul>
       </div>
       <div>
         <h3 class="text-lg font-semibold mb-6">Categories</h3>
         <ul class="space-y-3">
-          <li><a href="#gallery" data-filter="flowers" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Flowers</a></li> <!-- CHANGED href -->
-          <li><a href="#gallery" data-filter="nature" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Nature</a></li> <!-- CHANGED href -->
-          <li><a href="#gallery" data-filter="cute" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Cute</a></li> <!-- CHANGED href -->
-          <li><a href="#gallery" data-filter="artistic" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Artistic</a></li> <!-- CHANGED href -->
-          <li><a href="#gallery" data-filter="all" class="text-gray-400 hover:text-white transition-colors footer-filter-link">New Additions</a></li> <!-- CHANGED href -->
+          <li><a href="#gallery" data-filter="flowers" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Flowers</a></li>
+          <li><a href="#gallery" data-filter="nature" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Nature</a></li>
+          <li><a href="#gallery" data-filter="cute" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Cute</a></li>
+          <li><a href="#gallery" data-filter="artistic" class="text-gray-400 hover:text-white transition-colors footer-filter-link">Artistic</a></li>
+          <li><a href="#gallery" data-filter="all" class="text-gray-400 hover:text-white transition-colors footer-filter-link">New Additions</a></li>
         </ul>
       </div>
       <div>
@@ -345,8 +346,8 @@
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Celestial World. All rights reserved.</p>
         <div class="flex items-center space-x-6">
-          <li><a href="#privacy-policy" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a></li> <!-- CHANGED href -->
-          <li><a href="#terms-of-service" class="text-gray-400 hover:text-white text-sm">Terms of Service</a></li> <!-- CHANGED href -->
+          <li><a href="#privacy-policy" class="text-gray-400 hover:text-white text-sm nav-item">Privacy Policy</a></li>
+          <li><a href="#terms-of-service" class="text-gray-400 hover:text-white text-sm nav-item">Terms of Service</a></li>
         </div>
       </div>
     </div>
@@ -404,7 +405,7 @@
 <!-- Scripts -->
 <script id="all-celestial-items-data">
 // This data is used by the gallery script on the homepage
-// USER: Make sure these 'src' paths match your files in the 'images' folder
+// USER: Make sure these 'src' paths match your files in the 'images' folder (CASE-SENSITIVE)
 const allCelestialItems = [
   { id: 'userimg_01', src: 'images/userimg_01.jpg', title: 'Soft Pink Roses', description: 'Delicate pink roses with scattered petals.', category: 'flowers', tags: ['roses', 'pink', 'floral', 'soft'] },
   { id: 'userimg_02', src: 'images/userimg_02.jpg', title: 'Blue Hydrangeas in Rain', description: 'Vibrant blue hydrangeas glistening with raindrops.', category: 'flowers', tags: ['hydrangea', 'blue', 'rain', 'water drops'] },
@@ -514,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
         home: `
             <main>
                 <!-- Hero Section -->
-                <!-- Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipxXaMYqEdad_ba4SiK7LLLdBk_a5hIIeyG_L2bxINV7kkuewSpo7YHU3MEWDlFuOyjPllB0Jo0XTodoCCrcdsAsyhzWfADdi5IZfI99oG0zo583Sx-xpFyTtS0Z4wNcdjc9OmBfPksyUU1Z_snzJ2HuQsE9wpx4ChvHcIBMlfrX6PnzFwpoEi-2AmWXw/s1600/img%20(39).jpg -->
+                <!-- Make sure 'images/hero-background.jpg' exists in your 'images' folder -->
                 <section class="relative min-h-screen flex items-center" style="background-image: url('images/hero-background.jpg'); background-size: cover; background-position: center;">
                   <div class="hero-particles" id="particles-container"></div>
                   <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
@@ -540,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                       <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
                         <div class="h-48 overflow-hidden">
-                          <!-- Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinFWLunQex8ByqDa24SI20T2Zty3wF-3Ngwf_sYdCWyFrhFSccv4uvyImMxfagDyuHuuWbgbb2npfW0ghcztqefXeMWNpqf-S8YjValSQtbw2d_1pZ7jS7lleQU2979z5Wxq6R_ilE-JubSzwKq_C8kgeVB4nJ-vR7FTSZojhGJshA_3BC57eUCSiuj9o/s320/img%20(1).jpg -->
+                          <!-- Make sure 'images/category-flowers.jpg' exists -->
                           <img src="images/category-flowers.jpg" alt="Flowers" class="w-full h-full object-cover object-top transition-transform duration-500">
                         </div>
                         <div class="p-6">
@@ -551,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       </div>
                       <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
                         <div class="h-48 overflow-hidden">
-                           <!-- Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCBosluN2fslUXsWC9vUesk-cn0Mv0cvd9D9WoudcCfJtkws47lI5fMY3M9EJUHz6f1NJ1pDGAOwIkBz2-hmf33NnbHN9igXWKh25u6t6ZFfeGXbe35q1WuGYIH0u01yVnOvSPaEhv0v3dLW1_h5mI9bu4EyOFkebLjQZzdc8LMxvDtveC8HuFJEqD1UM/s320/img%20(8).jpg -->
+                           <!-- Make sure 'images/category-nature.jpg' exists -->
                            <img src="images/category-nature.jpg" alt="Nature" class="w-full h-full object-cover object-top transition-transform duration-500">
                         </div>
                         <div class="p-6">
@@ -562,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       </div>
                       <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
                         <div class="h-48 overflow-hidden">
-                           <!-- Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7dUSc6yiCYtyTTdzYDD8JkasMD6vfTx4mhQph4ydeKb8jnWRLdOARN0O2e9isnrlA7EeZIGqt25w2AmfVcwHldVkGehCw2oJ7zTs4Jgk3V5tl0pppJez1UhTf2CxlR2K0nEQNP0ZG1HS5KWuxLgCV0Mp7rwpuHCslo_EFAY4oDpm7Gjyk0nuOJ-cNEJY/s320/img%20(17).jpg -->
+                           <!-- Make sure 'images/category-cute.jpg' exists -->
                            <img src="images/category-cute.jpg" alt="Cute" class="w-full h-full object-cover object-top transition-transform duration-500">
                         </div>
                         <div class="p-6">
@@ -573,7 +574,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       </div>
                       <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
                         <div class="h-48 overflow-hidden">
-                           <!-- Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMcP-vP6H0Ky_etV1fa5kaeFSieGuH332Ak893uDBhn7Fr9eMZoL8xr6rzB9QtOTybJc6lnoTwiRDeAB4kQAT-j0zia0SovcskWP_20Qi89gXIHj257yt5urygpppZAFihJNqQQ1TGpUffce6D0C6et7vFnXvT4ifOdgrIrvUBtSRhE_4_LA9a2ArBVyM/s320/img%20(15).jpg -->
+                           <!-- Make sure 'images/category-artistic.jpg' exists -->
                            <img src="images/category-artistic.jpg" alt="Artistic" class="w-full h-full object-cover object-top transition-transform duration-500">
                         </div>
                         <div class="p-6">
@@ -621,7 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </section>
 
                 <!-- Newsletter Section -->
-                <!-- Corresponds to: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjV7-70PHPkwm6YU8DJAdHLp6-Eb_CYfKWqdxgIaeGUpQOhK88plks7vElHQ_Fvlmh2tDKlfX5YgtWlr0sDpPNmoNtRy7ETZod4ctthMxb3JdcEpIdUeqiW7tcJQE5HA5Z5BgDNV5SiDfUqa93PYYdKfPpRIaDhss8YkJz8NCmchz3AiiROcMKAc6qPcAw/s1600/img%20(25).jpg -->
+                <!-- Make sure 'images/newsletter-bg.jpg' exists -->
                 <section class="py-20 relative overflow-hidden" style="background-image: url('images/newsletter-bg.jpg'); background-size: cover; background-position: center;">
                   <div class="absolute inset-0 bg-black/50"></div>
                   <div class="container mx-auto px-4 relative z-10">
@@ -675,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl">
                       <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center md:text-left">Send Us a Message</h2>
                       <div class="aspect-w-1 aspect-h-1 md:aspect-h-[1.5]">
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLAiBnzUwnXH-jzbJmCsOauaAn1_-2608eyndC0HfQE8gYyQ/viewform?embedded=true" width="100%" height="1050" frameborder="0" marginheight="0" marginwidth="0" class="rounded-md">Loading</iframe>
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLAiBnzUwnXH-jzbJmCsOauaAn1_-2608eyndC0HfQE8gYyQ/viewform?embedded=true" width="100%" height="1050" frameborder="0" marginheight="0" marginwidth="0" class="rounded-md">Loading…</iframe>
                       </div>
                     </div>
                   </div>
@@ -821,14 +822,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     siteHeader.classList.add('glassmorphism-light');
                 }
-            } else if (currentPage === 'contact' || currentPage === 'about' || currentPage === 'privacy' || currentPage === 'terms') { // Apply to other "pages" too
-                 // Assuming 'images/contact-header-bg.jpg' is a generic header for these pages
-                const pageSpecificHeaderImage = 'images/contact-header-bg.jpg'; // Change if you have different images
+            } else if (currentPage === 'contact' || currentPage === 'about' || currentPage === 'privacy' || currentPage === 'terms') {
+                // MODIFIED: Use hero-background.jpg for these pages' headers
+                const pageSpecificHeaderImage = 'images/hero-background.jpg'; 
 
                 if (scrolled) {
                     siteHeader.classList.add('glassmorphism-dark');
-                    headerBgOverlayDynamic.style.opacity = '0';
+                    headerBgOverlayDynamic.style.opacity = '0'; // Hide image overlay when scrolled
                 } else {
+                    // Not scrolled, show the image overlay
+                    siteHeader.classList.remove('glassmorphism-dark'); // Ensure no dark glassmorphism if not scrolled
                     headerBgOverlayDynamic.style.opacity = '1';
                     headerBgOverlayDynamic.style.backgroundImage = `url('${pageSpecificHeaderImage}')`;
                 }
@@ -839,22 +842,19 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', updateHeaderStyle);
 
         // Active link highlighting
-        const currentHash = window.location.hash || "#"; // Treat no hash as home
+        const currentHash = window.location.hash || "#"; 
 
-        document.querySelectorAll('header .nav-item, footer .nav-item').forEach(link => {
+        document.querySelectorAll('header .nav-item, footer .nav-item, footer a.text-sm').forEach(link => {
             link.classList.remove('nav-link-active');
             const linkHref = link.getAttribute('href');
             let linkIsForCurrentHash = false;
 
-            // Handle home link (index.html or #)
             if ((linkHref === 'index.html' || linkHref === '#') && (currentHash === '#' || currentHash.startsWith('#categories') || currentHash.startsWith('#gallery'))) {
                 linkIsForCurrentHash = true;
             }
-            // Handle direct hash matches (#contact, #about, etc.)
             else if (linkHref === currentHash) {
                 linkIsForCurrentHash = true;
             }
-            // Handle section links on the homepage (#categories, #gallery)
             else if (currentPage === 'home' && (linkHref === '#categories' || linkHref === '#gallery') && currentHash.startsWith(linkHref)) {
                  linkIsForCurrentHash = true;
             }
@@ -865,7 +865,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Explicitly set active for current page type, this helps override if multiple conditions met
         if (currentPage === 'contact') {
             document.querySelectorAll('a[href="#contact"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
         } else if (currentPage === 'about') {
@@ -874,10 +873,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('a[href="#privacy-policy"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
         } else if (currentPage === 'terms') {
             document.querySelectorAll('a[href="#terms-of-service"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
-        } else if (currentPage === 'home') { // Ensure "Home" is active for true home and home sections
+        } else if (currentPage === 'home') { 
              document.querySelectorAll('a[href="index.html"], a[href="#"]').forEach(homeLink => {
                 if(currentHash === '#' || currentHash.startsWith('#categories') || currentHash.startsWith('#gallery')){
-                    homeLink.classList.remove('nav-link-active'); // Clean first
+                    homeLink.classList.remove('nav-link-active');
                     homeLink.classList.add('nav-link-active');
                 }
             });
@@ -909,6 +908,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function initParticles() {
         const particlesContainer = document.getElementById('particles-container');
         if (!particlesContainer) return;
+        particlesContainer.innerHTML = ''; // Clear existing if any
         for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
@@ -947,9 +947,9 @@ document.addEventListener('DOMContentLoaded', function() {
             itemDiv.setAttribute('data-category', item.category);
             itemDiv.setAttribute('data-id', item.id);
             let imgHeightClass = 'h-64';
-            if (viewToggle && viewToggle.checked) {
-                const heights = ['h-72', 'h-64', 'h-80', 'h-56', 'h-96'];
-                imgHeightClass = heights[Math.floor(Math.random() * heights.length)];
+            if (viewToggle && viewToggle.checked) { // Masonry view
+                const randomFactor = ((item.id.charCodeAt(item.id.length -1) % 5) + 5 ); // Pseudo-random based on ID
+                imgHeightClass = `h-${56 + randomFactor * 4}`; // e.g. h-56, h-60, h-64, h-72, h-80, h-96
             }
             itemDiv.innerHTML = `
               <img src="${item.src}" alt="${item.title}" class="w-full ${imgHeightClass} object-cover object-top">
@@ -973,8 +973,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const fragment = document.createDocumentFragment();
             itemsToRender.forEach(item => fragment.appendChild(createImageElement(item)));
             galleryGrid.appendChild(fragment);
-            applyMasonryIfNeeded();
+            applyMasonryIfNeeded(); // Call this after adding items
         }
+        
+        function applyMasonryIfNeeded() { // Renamed from applyMasonry
+            const items = galleryGrid.querySelectorAll('.gallery-item'); // Select items
+            const itemImages = galleryGrid.querySelectorAll('.gallery-item img'); // Select images within items
+
+            if (viewToggle && viewToggle.checked) {
+                galleryGrid.classList.remove('grid', 'grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4');
+                galleryGrid.classList.add('masonry-grid'); // Your custom class for masonry from CSS
+                // The heights are now set dynamically in createImageElement based on masonry state
+                // This function now mainly toggles the grid classes
+            } else {
+                galleryGrid.classList.remove('masonry-grid');
+                galleryGrid.classList.add('grid', 'grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4');
+                itemImages.forEach(img => {
+                    img.className = 'w-full h-64 object-cover object-top'; // Reset to default grid height
+                });
+            }
+        }
+
 
         function getFilteredAndSearchedItems() {
             let items = allCelestialItems;
@@ -1009,14 +1028,16 @@ document.addEventListener('DOMContentLoaded', function() {
             loadMoreBtn.disabled = true;
             setTimeout(() => {
                 displayedItemsCount += itemsPerLoad;
-                displayItems();
+                displayItems(); // This will call renderGalleryItems which calls applyMasonryIfNeeded
                 loadMoreBtn.innerHTML = 'Load More';
                 loadMoreBtn.disabled = false;
-            }, 1000);
+            }, 700); // Slightly reduced timeout
         }
 
         function updateLoadMoreButton(totalFilteredItems) {
-            loadMoreBtn.style.display = (displayedItemsCount >= totalFilteredItems) ? 'none' : 'inline-block';
+             if (loadMoreBtn) {
+                loadMoreBtn.style.display = (displayedItemsCount >= totalFilteredItems) ? 'none' : 'inline-block';
+            }
         }
 
         filterButtons.forEach(button => {
@@ -1035,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function triggerFilter(filterValue) {
             const targetButton = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
             if (targetButton) {
-                targetButton.click(); // This will handle active class and re-render
+                targetButton.click(); 
             }
         }
 
@@ -1053,8 +1074,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const filterValue = this.dataset.filter;
                 if (getCurrentPageType() !== 'home') {
-                    window.location.href = `index.html#gallery?filter=${filterValue}`; // Navigate to home, add filter as query param in hash
-                                                                                        // You'd need logic in initApp or initGallery to parse this on load
+                    window.location.href = `index.html#gallery?filter=${filterValue}`; 
                 } else {
                     triggerFilter(filterValue);
                     const gallerySection = document.getElementById('gallery');
@@ -1065,27 +1085,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         if (viewToggle) {
-            viewToggle.addEventListener('change', applyMasonryIfNeeded);
+            viewToggle.addEventListener('change', () => {
+                 // When toggle changes, we need to re-render items to apply correct heights if masonry is active
+                 // or reset heights if grid view is active.
+                 // The current displayItems() -> renderGalleryItems() -> createImageElement() -> applyMasonryIfNeeded() flow should handle this.
+                 displayItems(); // Re-render with current items but new view style
+            });
         }
-
-        function applyMasonryIfNeeded() {
-            const items = galleryGrid.querySelectorAll('.gallery-item img');
-            if (viewToggle && viewToggle.checked) {
-                galleryGrid.classList.remove('grid', 'sm:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4');
-                galleryGrid.classList.add('masonry-grid');
-                const heights = ['260px', '320px', '290px', '350px', '240px', '300px', '270px'];
-                items.forEach(img => {
-                    const randomHeight = heights[Math.floor(Math.random() * heights.length)];
-                    img.style.height = randomHeight;
-                });
-            } else {
-                galleryGrid.classList.remove('masonry-grid');
-                galleryGrid.classList.add('grid', 'sm:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4');
-                items.forEach(img => {
-                    img.style.height = '256px'; // Default h-64
-                });
-            }
-        }
+        
 
         if (loadMoreBtn) loadMoreBtn.addEventListener('click', loadMoreAction);
 
@@ -1109,7 +1116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const itemData = allCelestialItems.find(i => i.id === itemId);
 
             if (actionButton) {
-                e.stopPropagation();
+                e.stopPropagation(); // Prevent modal from opening if an action button is clicked
                 const action = actionButton.dataset.action;
                 if (action === 'like') toggleLike(actionButton.querySelector('i'), false, true);
                 else if (action === 'save') showToast('Image saved to collection!');
@@ -1150,17 +1157,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
         
         function closeModal() {
-            modal.classList.remove('flex');
+            if (modal) modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
             currentModalItemId = null;
         }
 
         modalLikeBtn.addEventListener('click', function() {
             const icon = this.querySelector('i');
-            const isNowLiked = toggleLike(icon, true);
+            const isNowLiked = toggleLike(icon, true, false); // Pass fromModal=true, isDirectClick=false
             if (currentModalItemId) {
                 const galleryItemIcon = galleryGrid.querySelector(`.gallery-item[data-id="${currentModalItemId}"] .gallery-action-btn[data-action="like"] i`);
-                if (galleryItemIcon) toggleLike(galleryItemIcon, true, false, isNowLiked);
+                if (galleryItemIcon) toggleLike(galleryItemIcon, false, false, isNowLiked); // Sync gallery icon state
             }
             showToast(isNowLiked ? 'Liked!' : 'Unliked.');
         });
@@ -1177,8 +1184,8 @@ document.addEventListener('DOMContentLoaded', function() {
             currentSearchTerm = this.value;
             loadInitialItems();
         }
-        searchInputDesktop.addEventListener('input', handleSearchInput);
-        searchInputMobile.addEventListener('input', handleSearchInput);
+        if(searchInputDesktop) searchInputDesktop.addEventListener('input', handleSearchInput);
+        if(searchInputMobile) searchInputMobile.addEventListener('input', handleSearchInput);
 
         function updateCategoryCounts() {
             categoryImageCountSpans.forEach(span => {
@@ -1200,19 +1207,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Initial Load
         loadInitialItems();
         updateCategoryCounts();
-        checkHashForFilter(); // Check for filter in hash on load
+        checkHashForFilter(); 
     }
 
     function toggleLike(iconElement, fromModal = false, isDirectClick = false, forceState) {
         let currentLikedState = iconElement.classList.contains('ri-heart-fill');
         let isNowLiked;
 
-        if (typeof forceState === 'boolean') {
+        if (typeof forceState === 'boolean') { // If forceState is provided (true/false), use it
             isNowLiked = forceState;
-        } else {
+        } else { // Otherwise, toggle current state
             isNowLiked = !currentLikedState;
         }
 
@@ -1224,10 +1230,10 @@ document.addEventListener('DOMContentLoaded', function() {
             iconElement.classList.add('ri-heart-line');
         }
         
-        if (isDirectClick && !fromModal) {
+        if (isDirectClick && !fromModal) { // Only show toast for direct clicks on gallery items, not modal syncs
              showToast(isNowLiked ? 'Added to favorites' : 'Removed from favorites');
         }
-        return isNowLiked;
+        return isNowLiked; // Return the new state
     }
 
 
@@ -1250,19 +1256,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         pageContentWrapper.innerHTML = pageContentsHTML[currentPage] || pageContentsHTML.home;
         
-        pageContentWrapper.classList.remove('contact-active', 'about-active', 'privacy-active', 'terms-active'); // Clear all first
-        if (currentPage === 'contact') {
-            pageContentWrapper.classList.add('contact-active');
-        } else if (currentPage === 'about') {
-            pageContentWrapper.classList.add('about-active');
-        } else if (currentPage === 'privacy') {
-            pageContentWrapper.classList.add('privacy-active');
-        } else if (currentPage === 'terms') {
-            pageContentWrapper.classList.add('terms-active');
-        }
+        pageContentWrapper.classList.remove('contact-active', 'about-active', 'privacy-active', 'terms-active'); 
+        if (currentPage === 'contact') pageContentWrapper.classList.add('contact-active');
+        else if (currentPage === 'about') pageContentWrapper.classList.add('about-active');
+        else if (currentPage === 'privacy') pageContentWrapper.classList.add('privacy-active');
+        else if (currentPage === 'terms') pageContentWrapper.classList.add('terms-active');
 
 
-        setupHeader(currentPage);
+        setupHeader(currentPage); // Call setupHeader before specific page initializations
         setupCustomCursor();
         
         if (currentPage === 'home') {
@@ -1270,14 +1271,40 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typeof initGallery === 'function') initGallery();
         }
 
-        // Re-evaluate header and active links after content is loaded and hash might have changed section
+        // Ensure smooth scrolling for hash links works after content is loaded
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Check if it's a "page" link or a true section link on the current page
+                if (href === "#" || pageContentsHTML[href.substring(1)]) {
+                    // This will be handled by hashchange and initApp
+                    return;
+                }
+                
+                // For section links on the same page (e.g. #gallery from home)
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement && (currentPage === 'home' || !pageContentsHTML[targetId])) { // Ensure it's a section on current page
+                    e.preventDefault();
+                    // Adjust for fixed header height if necessary
+                    const headerHeight = document.getElementById('site-header')?.offsetHeight || 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerHeight - 20; // 20px extra padding
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // Final call to setupHeader to ensure active links are correct after all processing
         setupHeader(currentPage);
     }
     
-    // Listen for hash changes to re-initialize the app (SPA behavior)
     window.addEventListener('hashchange', initApp);
-
-    initApp(); // Start the application on initial load
+    initApp(); 
 });
 </script>
 
