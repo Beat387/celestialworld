@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial World</title>
 
+    <!-- Corrected Favicon Link -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <script>
       tailwind.config = {
@@ -190,8 +192,6 @@
     .masonry-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      grid-auto-rows: auto; /* Allow items to have their natural height */
-      align-items: start; /* Align items to the start of the grid cell */
       grid-gap: 1.5rem; /* Equivalent to gap-6 */
     }
     .custom-switch {
@@ -226,31 +226,17 @@
     #page-content-wrapper.terms-active {
       padding-top: 76px; /* Apply padding only for these pages' main content when header is fixed */
     }
-    
-    /* Ad Container Styling */
-    .gallery-ad-item, .footer-ad-container, .content-ad-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f0f0f0; /* A light gray background */
-        border-radius: 8px;
-    }
-    .gallery-ad-item {
-        /* This ensures the ad takes up grid space without forcing a fixed height */
-        align-self: stretch; 
-    }
-    .gallery-ad-item img, .footer-ad-container img, .content-ad-container img {
-        max-width: 100%;
-        height: auto;
-    }
-
 
     </style>
 </head>
-<body data-page="home"> <div class="custom-cursor"></div>
+<body data-page="home"> <!-- data-page will be updated by JS -->
+<div class="custom-cursor"></div>
 
+<!-- Header -->
 <header class="fixed w-full z-50 transition-all duration-300" id="site-header">
-  <div class="header-bg-image-overlay-content" id="header-bg-overlay-dynamic"></div> <div class="container mx-auto px-4 py-3 relative"> <div class="flex items-center justify-between">
+  <div class="header-bg-image-overlay-content" id="header-bg-overlay-dynamic"></div> <!-- BG Image and Overlay container -->
+  <div class="container mx-auto px-4 py-3 relative"> <!-- Header content container -->
+    <div class="flex items-center justify-between">
       <a href="index.html" class="flex items-center header-logo-link">
         <span class="text-2xl font-['Pacifico'] text-white">Celestial World</span>
       </a>
@@ -271,6 +257,7 @@
           </div>
         </div>
         <div class="flex items-center space-x-4">
+          <!-- UPDATED: Added id="header-like-button" -->
           <a href="#" id="header-like-button" class="text-white hover:text-primary transition-colors">
             <div class="w-6 h-6 flex items-center justify-center">
               <i class="ri-heart-line"></i>
@@ -299,20 +286,24 @@
         </div>
       </div>
        <div class="flex items-center space-x-4 mt-4">
+          <!-- UPDATED: Added id="mobile-like-button" -->
           <a href="#" id="mobile-like-button" class="text-white hover:text-primary transition-colors">
             <div class="w-6 h-6 flex items-center justify-center">
               <i class="ri-heart-line"></i>
             </div>
-              <span class="ml-2">Favorites</span>
+             <span class="ml-2">Favorites</span>
           </a>
         </div>
     </nav>
   </div>
 </header>
 
+<!-- Main Content Area - Populated by JavaScript -->
 <div id="page-content-wrapper">
-    </div>
+    <!-- Content will be injected here -->
+</div>
 
+<!-- Footer -->
 <footer class="bg-gray-900 text-white">
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -358,14 +349,6 @@
         </ul>
       </div>
     </div>
-    
-    <!-- AD PLACEMENT 3: Banner Ad in Footer -->
-    <div class="footer-ad-container mt-12 text-center">
-        <div class="ad-container-banner inline-block">
-          <img src="https://via.placeholder.com/728x90.png?text=Display+Ad+728x90" alt="Advertisement" class="rounded-md">
-        </div>
-    </div>
-
     <div class="border-t border-gray-800 mt-12 pt-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Celestial World. All rights reserved.</p>
@@ -378,6 +361,7 @@
   </div>
 </footer>
 
+<!-- Image Modal (from Homepage) -->
 <div class="image-modal" id="image-modal">
   <div class="max-w-4xl w-full p-4 relative bg-white rounded-lg shadow-xl m-auto" style="max-height: 90vh; overflow-y: auto;">
     <button class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors z-20" id="close-modal">
@@ -391,7 +375,8 @@
             <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-2">Image Title</h3>
             <p id="modal-description" class="text-gray-600 mb-4 text-sm">Detailed description of the image goes here.</p>
             <div id="modal-tags" class="mb-4">
-                </div>
+                <!-- Tags will be injected here -->
+            </div>
             <div class="space-y-3">
                  <button class="modal-action-btn w-full flex items-center justify-center space-x-2 text-gray-700 hover:text-primary transition-colors bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-button" id="modal-like-btn">
                     <i class="ri-heart-line"></i>
@@ -414,6 +399,7 @@
   </div>
 </div>
 
+<!-- Toast Notification -->
 <div class="toast" id="toast">
   <div class="flex items-center">
     <div class="w-6 h-6 flex items-center justify-center text-primary mr-3">
@@ -423,6 +409,7 @@
   </div>
 </div>
 
+<!-- Scripts -->
 <script id="all-celestial-items-data">
 // This data is used by the gallery script on the homepage
 // USER: Make sure these 'src' paths match your files in the 'images' folder (CASE-SENSITIVE)
@@ -455,7 +442,7 @@ const allCelestialItems = [
   { id: 'userimg_26', src: 'images/userimg_26.jpg', title: 'Red Flower in Rain shower', description: 'A single red flower standing resilient in a shower of rain.', category: 'flowers', tags: ['flower', 'red', 'rain', 'nature', 'resilience'] },
   { id: 'userimg_27', src: 'images/userimg_27.jpg', title: 'Red and White Tulips Bouquet', description: 'A classic bouquet of red and white tulips in a white pitcher.', category: 'flowers', tags: ['tulips', 'red', 'white', 'bouquet', 'still life'] },
   { id: 'userimg_28', src: 'images/userimg_28.jpg', title: 'Good Things Take Time Quote', description: 'Inspirational quote "Good things take time" on a pink wooden background with baby\'s breath.', category: 'artistic', tags: ['quote', 'inspirational', 'pink', 'patience'] },
-  { id: 'userimg_29', src: 'images/userimg_29.jpg', 'title': 'Pink Cherry Blossoms Close-up', 'description': 'A close-up view of delicate pink cherry blossoms.', category: 'flowers', tags: ['cherry blossom', 'pink', 'macro', 'spring'] },
+  { id: 'userimg_29', src: 'images/userimg_29.jpg', title: 'Pink Cherry Blossoms Close-up', description: 'A close-up view of delicate pink cherry blossoms.', category: 'flowers', tags: ['cherry blossom', 'pink', 'macro', 'spring'] },
   { id: 'userimg_30', src: 'images/userimg_30.jpg', title: 'Cute Bunnies on a Swing', description: 'Two adorable bunnies, one with a tiara, on a swing under cherry blossoms.', category: 'cute', tags: ['bunnies', 'cute', 'love', 'spring', 'swing'] },
   { id: 'userimg_31', src: 'images/userimg_31.jpg', title: 'Cherry Blossoms in White Vase', description: 'Elegant arrangement of pink cherry blossoms in a white pitcher.', category: 'flowers', tags: ['cherry blossom', 'pink', 'vase', 'still life'] },
   { id: 'userimg_32', src: 'images/userimg_32.jpg', title: 'Cute Teddy Bear with Blue Hat', description: 'An adorable fluffy white teddy bear character wearing a light blue beanie.', category: 'cute', tags: ['teddy bear', 'cute', 'character', 'blue'] },
@@ -474,499 +461,879 @@ const allCelestialItems = [
   { id: 'userimg_45', src: 'images/userimg_45.jpg', title: 'Purple Periwinkle Bouquet', description: 'A charming bouquet of purple periwinkle (vinca) flowers in a glass vase.', category: 'flowers', tags: ['periwinkle', 'vinca', 'purple', 'bouquet', 'still life'] },
   { id: 'userimg_46', src: 'images/userimg_46.jpg', title: 'Zen Spa with Pink Flowers', description: 'Pink frangipani flowers and smooth spa stones on a turquoise surface with water drops.', category: 'flowers', tags: ['frangipani', 'spa', 'zen', 'pink', 'stones', 'wellness'] },
   { id: 'userimg_47', src: 'images/userimg_47.jpg', title: 'Cute Bunny Tasting Snowflake', description: 'An adorable white bunny with its tongue out, seemingly trying to catch a falling snowflake.', category: 'cute', tags: ['bunny', 'cute', 'snow', 'winter', 'snowflake'] },
-  { id: 'userimg_48', src: 'images/userimg_48.jpg', title: 'Sky Lanterns at Night', description: 'Numerous glowing sky lanterns floating in a dark night sky with a crescent moon.', category: 'artistic', tags: ['sky lanterns', 'night', 'moon', 'festival', 'magical'] }
+  { id: 'userimg_48', src: 'images/userimg_48.jpg', title: 'Sky Lanterns at Night', description: 'Numerous glowing sky lanterns floating in a dark night sky with a crescent moon.', category: 'artistic', tags: ['sky lanterns', 'night', 'festival', 'lights', 'moon', 'magical'] },
+  { id: 'userimg_49', src: 'images/userimg_49.jpg', title: 'White Lilies in Vase', description: 'An elegant bouquet of white lilies in a clear glass vase against a dark background.', category: 'flowers', tags: ['lilies', 'white', 'bouquet', 'still life', 'elegant'] },
+  { id: 'userimg_50', src: 'images/userimg_50.jpg', title: 'Cute Bunny Couple in Sweaters', description: 'Two adorable bunnies wearing cozy sweaters, nuzzling each other.', category: 'cute', tags: ['bunnies', 'cute', 'love', 'sweaters', 'cozy', 'couple'] },
+  { id: 'userimg_51', src: 'images/userimg_51.jpg', title: 'Think Positive Flower Quote', description: 'The words "Think Positive" above a beautiful pink and peach flower.', category: 'artistic', tags: ['quote', 'positive', 'flower', 'inspirational'] },
+  { id: 'userimg_52', src: 'images/userimg_52.jpg', title: 'Frangipani in Garden Bowl', description: 'Frangipani flowers floating in a bowl in a serene garden setting.', category: 'flowers', tags: ['frangipani', 'spa', 'garden', 'still life', 'tranquil'] },
+  { id: 'userimg_53', src: 'images/userimg_53.jpg', title: 'Protect Your Name Quote', description: 'Inspirational quote about loyalty with pink flowers in the background.', category: 'artistic', tags: ['quote', 'wisdom', 'flowers', 'inspirational'] },
+  { id: 'userimg_54', src: 'images/userimg_54.jpg', title: 'Cute Pink Birds', description: 'Two adorable fluffy pink birds snuggling on a branch with blossoms.', category: 'cute', tags: ['birds', 'cute', 'pink', 'love', 'spring'] },
+  { id: 'userimg_55', src: 'images/userimg_55.jpg', title: 'Crystal Strawberries in Basket', description: 'Artistic representation of translucent pink crystal strawberries in a wicker basket.', category: 'artistic', tags: ['strawberry', 'crystal', 'art', 'pink', 'fruit', 'basket'] },
+  { id: 'userimg_56', src: 'images/userimg_56.jpg', title: 'Pink Rose with Feather', description: 'A soft pink rose beside a delicate white feather, with reflections.', category: 'flowers', tags: ['rose', 'pink', 'feather', 'reflection', 'soft', 'elegant'] },
+  { id: 'userimg_57', src: 'images/userimg_57.jpg', title: 'Realize How Blessed You Are Quote', description: 'Inspirational quote on a lavender background with white lily illustrations.', category: 'artistic', tags: ['quote', 'blessed', 'inspirational', 'lilies', 'purple'] },
+  { id: 'userimg_58', src: 'images/userimg_58.jpg', title: 'Kitten in Karate Pose', description: 'A cute tabby kitten in a yellow martial arts gi, striking a pose among autumn leaves.', category: 'cute', tags: ['kitten', 'cute', 'karate', 'autumn', 'funny'] },
+  { id: 'userimg_59', src: 'images/userimg_59.jpg', title: 'Swan on Moonlit Lake', description: 'An elegant white swan swimming on a dark lake under a full moon, with reflections.', category: 'nature', tags: ['swan', 'moon', 'lake', 'night', 'reflection', 'elegant'] },
+  { id: 'userimg_60', src: 'images/userimg_60.jpg', title: 'Heart-Shaped Pink Sprout', description: 'A delicate pink heart-shaped flower sprouting from dark earth, with bokeh lights.', category: 'nature', tags: ['flower', 'heart', 'pink', 'sprout', 'love', 'hope', 'bokeh'] },
+  { id: 'userimg_61', src: 'images/userimg_61.jpg', title: 'Books with Cherry Blossoms', description: 'Two blue books on a white table, adorned with pink cherry blossoms.', category: 'artistic', tags: ['books', 'cherry blossom', 'spring', 'reading', 'still life'] },
+  { id: 'userimg_62', src: 'images/userimg_62.jpg', title: 'Rainbow Over Sunset Lake', description: 'A vibrant rainbow arching over a lake at sunset, with reflections.', category: 'nature', tags: ['rainbow', 'sunset', 'lake', 'reflection', 'landscape'] },
+  { id: 'userimg_63', src: 'images/userimg_63.jpg', title: 'Crystal Maple Leaf Ornament', description: 'A sparkling crystal maple leaf ornament hanging against a blue sky with clouds.', category: 'artistic', tags: ['crystal', 'maple leaf', 'ornament', 'sky', 'sparkling'] },
+  { id: 'userimg_64', src: 'images/userimg_64.jpg', title: 'Reeds by the Lakeside', description: 'Tall reeds swaying by a calm blue lake under a bright sky.', category: 'nature', tags: ['reeds', 'lake', 'landscape', 'serene', 'summer'] },
+  { id: 'userimg_65', src: 'images/userimg_65.jpg', title: 'Pink Rose with Falling Petals', description: 'A single pink rose with water droplets and petals falling around it.', category: 'flowers', tags: ['rose', 'pink', 'petals', 'water drops', 'artistic'] },
+  { id: 'userimg_66', src: 'images/userimg_66.jpg', title: 'Treat Yourself Like Someone You Love Quote', description: 'Self-love quote on a pink background with hearts.', category: 'artistic', tags: ['quote', 'self-love', 'pink', 'hearts', 'inspirational'] },
+  { id: 'userimg_67', src: 'images/userimg_67.jpg', title: 'White Blossom Path', description: 'A dreamy path lined with white cherry blossoms and falling petals.', category: 'flowers', tags: ['cherry blossom', 'white', 'path', 'spring', 'petals', 'dreamy'] },
+  { id: 'userimg_68', src: 'images/userimg_68.jpg', title: 'Cute Hamster with Grapes', description: 'An adorable hamster wearing a tiny straw hat, holding a bunch of green grapes.', category: 'cute', tags: ['hamster', 'cute', 'grapes', 'animal', 'hat'] },
+  { id: 'userimg_69', src: 'images/userimg_69.jpg', title: 'Single Blossom on Water', description: 'A delicate pink blossom floating on water with its reflection visible.', category: 'flowers', tags: ['blossom', 'pink', 'water', 'reflection', 'serene', 'macro'] },
+  { id: 'userimg_70', src: 'images/userimg_70.jpg', title: 'Hibiscus at Sunset', description: 'A vibrant pink hibiscus flower with a glittering bokeh background at sunset.', category: 'flowers', tags: ['hibiscus', 'pink', 'sunset', 'bokeh', 'glitter', 'tropical'] },
+  { id: 'userimg_71', src: 'images/userimg_71.jpg', title: 'Fiery Tulip in Night Rain', description: 'A glowing red and orange tulip in the rain at night.', category: 'flowers', tags: ['tulip', 'red', 'orange', 'rain', 'night', 'glow'] },
+  { id: 'userimg_72', src: 'images/userimg_72.jpg', title: 'Pink Crystal Grapes on Plate', description: 'Artistic representation of translucent pink crystal grapes on a white plate.', category: 'artistic', tags: ['grapes', 'crystal', 'pink', 'art', 'fruit', 'still life'] },
+  { id: 'userimg_73', src: 'images/userimg_73.jpg', title: 'Sunlit Cherry Blossom Macro', description: 'Detailed macro shot of a pink cherry blossom sparkling in the sunlight.', category: 'flowers', tags: ['cherry blossom', 'pink', 'macro', 'sunlight', 'spring'] },
+  { id: 'userimg_74', src: 'images/userimg_74.jpg', title: 'Blue Crystal Flower', description: 'A fantasy flower made of blue crystal with a green center, on a rocky surface.', category: 'artistic', tags: ['flower', 'blue', 'crystal', 'art', 'fantasy', 'glowing'] },
+  { id: 'userimg_75', src: 'images/userimg_75.jpg', title: 'Bamboo Forest in Snow', description: 'A serene bamboo forest with snow on the ground and magical light.', category: 'nature', tags: ['bamboo', 'snow', 'winter', 'forest', 'serene', 'magical'] },
+  { id: 'userimg_76', src: 'images/userimg_76.jpg', title: 'Crystal Raspberry', description: 'An artistic representation of a glistening red crystal raspberry on a plate.', category: 'artistic', tags: ['raspberry', 'crystal', 'red', 'art', 'fruit', 'shiny'] },
+  { id: 'userimg_77', src: 'images/userimg_77.jpg', title: 'Backlit Foxtail Grass', description: 'Green foxtail grass backlit by a yellow sun or light.', category: 'nature', tags: ['grass', 'foxtail', 'green', 'macro', 'sunlight', 'backlit'] },
+  { id: 'userimg_78', src: 'images/userimg_78.jpg', title: 'Crystal Flower on Book', description: 'A pink crystal flower resting on the open pages of a book.', category: 'artistic', tags: ['flower', 'crystal', 'pink', 'book', 'still life', 'reading'] },
+  { id: 'userimg_79', src: 'images/userimg_79.jpg', title: 'Beach Sunset with Birds', description: 'A beautiful beach sunset with waves and birds flying.', category: 'nature', tags: ['beach', 'sunset', 'ocean', 'birds'] },
+  { id: 'userimg_80', src: 'images/userimg_80.jpg', title: 'Autumn Road with Fallen Leaves', description: 'A road winding through an autumn forest, covered in colorful fallen leaves.', category: 'nature', tags: ['autumn', 'road', 'forest', 'leaves', 'fall', 'landscape'] },
+  { id: 'userimg_81', src: 'images/userimg_81.jpg', title: 'Sparkling Crystal Leaf in Sky', description: 'A crystal maple leaf ornament sparkling against a blue sky with sun and clouds.', category: 'artistic', tags: ['crystal', 'maple leaf', 'sky', 'sun', 'sparkling', 'ornament'] },
+  { id: 'userimg_82', src: 'images/userimg_82.jpg', title: 'Crystal Leaf with Water Droplet', description: 'A detailed crystal maple leaf with a water droplet hanging from its tip, against a sky background.', category: 'artistic', tags: ['crystal', 'maple leaf', 'water drop', 'sky', 'ornament'] },
+  { id: 'userimg_83', src: 'images/userimg_83.jpg', title: 'Cute Pastel Kittens', description: 'Four adorable chibi-style kittens in pastel colors sitting on a colorful wall.', category: 'cute', tags: ['kittens', 'cute', 'pastel', 'chibi', 'cats', 'friends'] },
+  { id: 'userimg_84', src: 'images/userimg_84.jpg', title: 'Glossy Pink Glass Tulips', description: 'An artistic representation of glossy pink glass tulips with green stems.', category: 'artistic', tags: ['tulips', 'pink', 'glass', 'art', 'flowers', 'shiny', 'modern'] },
+  { id: 'userimg_85', src: 'images/userimg_85.jpg', title: 'Jasmine Flowers in Basket by Window', description: 'A wicker basket filled with white jasmine flowers by a sunlit window.', category: 'flowers', tags: ['jasmine', 'white', 'basket', 'window', 'still life', 'fragrant'] },
+  { id: 'userimg_86', src: 'images/userimg_86.jpg', title: 'Adorable Golden Retriever Puppy', description: 'A happy golden retriever puppy sitting in lush green grass with sunlight.', category: 'cute', tags: ['puppy', 'dog', 'golden retriever', 'cute', 'pet', 'happy'] },
+  { id: 'userimg_87', src: 'images/userimg_87.jpg', title: 'Pink Gerbera Daisy with Dewdrops', description: 'Close-up of a vibrant pink gerbera daisy covered in dewdrops.', category: 'flowers', tags: ['daisy', 'gerbera', 'pink', 'dewdrops', 'macro', 'vibrant'] },
+  { id: 'userimg_88', src: 'images/userimg_88.jpg', title: 'Intricate Snowflake Macro', description: 'A detailed macro shot of a beautiful, intricate snowflake crystal.', category: 'nature', tags: ['snowflake', 'macro', 'winter', 'ice', 'crystal', 'detailed'] },
+  { id: 'userimg_89', src: 'images/userimg_89.jpg', title: 'Dusty Pink Roses in Vase', description: 'A soft bouquet of dusty pink roses in a clear glass vase.', category: 'flowers', tags: ['roses', 'pink', 'dusty rose', 'vase', 'still life', 'vintage'] },
+  { id: 'userimg_90', src: 'images/userimg_90.jpg', title: 'Heart Made of Pink Petals', description: 'Pink flower petals arranged in the shape of a heart on sand.', category: 'flowers', tags: ['heart', 'petals', 'pink', 'love', 'sand', 'romantic'] },
+  { id: 'userimg_91', src: 'images/userimg_91.jpg', title: 'Ethereal Glass Tulips', description: 'Artistic representation of translucent pink and white glass tulips.', category: 'artistic', tags: ['tulips', 'glass', 'art', 'pink', 'white', 'ethereal', 'delicate'] }
 ];
 </script>
 
-<script>
+<script id="app-main-script">
 document.addEventListener('DOMContentLoaded', function() {
+    const siteHeader = document.getElementById('site-header');
+    const headerBgOverlayDynamic = document.getElementById('header-bg-overlay-dynamic');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
     const pageContentWrapper = document.getElementById('page-content-wrapper');
-    const body = document.body;
+    const bodyElement = document.body;
 
-    const bannerAdTemplate = `
-        <div class="content-ad-container container mx-auto py-12 px-4">
-            <div class="ad-container-banner text-center">
-              <img src="https://via.placeholder.com/728x90.png?text=Display+Ad+728x90" alt="Advertisement" class="rounded-md inline-block">
-            </div>
-        </div>
-    `;
-
-    // --- Page Content Templates ---
-    const pageTemplates = {
+    // --- Page Content Definitions ---
+    const pageContentsHTML = {
         home: `
-            <div class="relative bg-gray-900 text-white h-[600px] flex items-center justify-center overflow-hidden">
-              <div class="absolute inset-0 z-0">
-                  <img src="images/hero-background.jpg" alt="Abstract purple background" class="w-full h-full object-cover opacity-30">
-                  <div class="hero-particles"></div>
-              </div>
-              <div class="relative z-10 text-center px-4">
-                  <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Find Your Inspiration</h1>
-                  <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">High-quality, artistic images for personal and commercial use. Free to download.</p>
-                  <div class="flex justify-center">
-                      <a href="#gallery" class="bg-primary hover:bg-secondary text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
-                          Explore Gallery
-                      </a>
+            <main>
+                <!-- Hero Section -->
+                <!-- Make sure 'images/hero-background.jpg' exists in your 'images' folder -->
+                <section class="relative min-h-screen flex items-center" style="background-image: url('images/hero-background.jpg'); background-size: cover; background-position: center;">
+                  <div class="hero-particles" id="particles-container"></div>
+                  <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
+                  <div class="container mx-auto px-4 py-20 relative z-10 w-full" style="padding-top: 80px;"> <!-- Adjusted padding for header -->
+                    <div class="max-w-2xl">
+                      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">Discover the Beauty of Our <span class="text-primary">Celestial</span> World</h1>
+                      <p class="text-xl text-white/90 mb-8">Explore stunning images of flowers, nature, and more. Download high-resolution photos for your projects, or simply immerse yourself in visual wonders.</p>
+                      <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#gallery" class="bg-primary hover:bg-primary/90 text-white py-3 px-8 rounded-button font-medium transition-all shadow-lg hover:shadow-xl !whitespace-nowrap">Explore Gallery</a>
+                        <a href="#categories" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white py-3 px-8 rounded-button font-medium transition-all border border-white/20 !whitespace-nowrap">View Categories</a>
+                      </div>
+                    </div>
                   </div>
-              </div>
-            </div>
+                </section>
 
-            <section id="categories" class="py-16 bg-white">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-3xl font-bold text-center mb-10">Browse Categories</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <a href="#gallery" data-filter="flowers" class="category-card relative rounded-lg overflow-hidden group">
-                            <img src="images/category-flowers.jpg" alt="Flowers" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                <h3 class="text-white text-xl font-semibold">Flowers</h3>
-                            </div>
-                        </a>
-                        <a href="#gallery" data-filter="nature" class="category-card relative rounded-lg overflow-hidden group">
-                            <img src="images/category-nature.jpg" alt="Nature" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                <h3 class="text-white text-xl font-semibold">Nature</h3>
-                            </div>
-                        </a>
-                        <a href="#gallery" data-filter="cute" class="category-card relative rounded-lg overflow-hidden group">
-                            <img src="images/category-cute.jpg" alt="Cute" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                <h3 class="text-white text-xl font-semibold">Cute</h3>
-                            </div>
-                        </a>
-                        <a href="#gallery" data-filter="artistic" class="category-card relative rounded-lg overflow-hidden group">
-                            <img src="images/category-artistic.jpg" alt="Artistic" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                <h3 class="text-white text-xl font-semibold">Artistic</h3>
-                            </div>
-                        </a>
+                <!-- Categories Section -->
+                <section id="categories" class="py-20 bg-white">
+                  <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                      <h2 class="text-3xl md:text-4xl font-bold mb-4">Explore Our <span class="text-primary">Categories</span></h2>
+                      <p class="text-gray-600 max-w-2xl mx-auto">Dive into our carefully curated collections of stunning visuals.</p>
                     </div>
-                </div>
-            </section>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                      <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+                        <div class="h-48 overflow-hidden">
+                          <!-- Make sure 'images/category-flowers.jpg' exists -->
+                          <img src="images/category-flowers.jpg" alt="Flowers" class="w-full h-full object-cover object-top transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                          <div class="flex items-center justify-between mb-3"> <h3 class="text-xl font-bold text-gray-800">Flowers</h3> <div class="w-8 h-8 flex items-center justify-center text-primary"><i class="ri-pages-line ri-lg"></i></div></div>
+                          <p class="text-gray-600 mb-4">Breathtaking blooms, delicate petals, and vibrant floral arrangements.</p>
+                          <div class="flex justify-between items-center"> <span class="text-sm text-gray-500 image-count" data-category="flowers">0 images</span> <a href="#gallery" class="text-primary font-medium hover:text-primary/80 transition-colors flex items-center filter-link" data-filter="flowers">Explore <div class="w-5 h-5 flex items-center justify-center ml-1"><i class="ri-arrow-right-line"></i></div></a></div>
+                        </div>
+                      </div>
+                      <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+                        <div class="h-48 overflow-hidden">
+                           <!-- Make sure 'images/category-nature.jpg' exists -->
+                           <img src="images/category-nature.jpg" alt="Nature" class="w-full h-full object-cover object-top transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                          <div class="flex items-center justify-between mb-3"> <h3 class="text-xl font-bold text-gray-800">Nature</h3> <div class="w-8 h-8 flex items-center justify-center text-primary"><i class="ri-plant-line ri-lg"></i></div></div>
+                          <p class="text-gray-600 mb-4">Serene landscapes, macro details, and the beauty of the natural world.</p>
+                          <div class="flex justify-between items-center"> <span class="text-sm text-gray-500 image-count" data-category="nature">0 images</span> <a href="#gallery" class="text-primary font-medium hover:text-primary/80 transition-colors flex items-center filter-link" data-filter="nature">Explore <div class="w-5 h-5 flex items-center justify-center ml-1"><i class="ri-arrow-right-line"></i></div></a></div>
+                        </div>
+                      </div>
+                      <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+                        <div class="h-48 overflow-hidden">
+                           <!-- Make sure 'images/category-cute.jpg' exists -->
+                           <img src="images/category-cute.jpg" alt="Cute" class="w-full h-full object-cover object-top transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                          <div class="flex items-center justify-between mb-3"> <h3 class="text-xl font-bold text-gray-800">Cute</h3> <div class="w-8 h-8 flex items-center justify-center text-primary"><i class="ri-bear-smile-line ri-lg"></i></div></div>
+                          <p class="text-gray-600 mb-4">Adorable animals, charming characters, and heartwarming scenes.</p>
+                          <div class="flex justify-between items-center"> <span class="text-sm text-gray-500 image-count" data-category="cute">0 images</span> <a href="#gallery" class="text-primary font-medium hover:text-primary/80 transition-colors flex items-center filter-link" data-filter="cute">Explore <div class="w-5 h-5 flex items-center justify-center ml-1"><i class="ri-arrow-right-line"></i></div></a></div>
+                        </div>
+                      </div>
+                      <div class="category-card group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+                        <div class="h-48 overflow-hidden">
+                           <!-- Make sure 'images/category-artistic.jpg' exists -->
+                           <img src="images/category-artistic.jpg" alt="Artistic" class="w-full h-full object-cover object-top transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                          <div class="flex items-center justify-between mb-3"> <h3 class="text-xl font-bold text-gray-800">Artistic</h3> <div class="w-8 h-8 flex items-center justify-center text-primary"><i class="ri-palette-line ri-lg"></i></div></div>
+                          <p class="text-gray-600 mb-4">Creative compositions, fantasy worlds, and unique visual art.</p>
+                          <div class="flex justify-between items-center"> <span class="text-sm text-gray-500 image-count" data-category="artistic">0 images</span> <a href="#gallery" class="text-primary font-medium hover:text-primary/80 transition-colors flex items-center filter-link" data-filter="artistic">Explore <div class="w-5 h-5 flex items-center justify-center ml-1"><i class="ri-arrow-right-line"></i></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
 
-            <section id="gallery" class="py-16 bg-gray-50">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-3xl font-bold text-center mb-4">Gallery</h2>
-                    <div id="gallery-filters" class="flex justify-center space-x-2 md:space-x-4 mb-10 flex-wrap">
-                        <button data-filter="all" class="filter-btn active font-medium text-gray-700 hover:text-primary py-2 px-4 rounded-full transition-colors">All</button>
-                        <button data-filter="flowers" class="filter-btn font-medium text-gray-700 hover:text-primary py-2 px-4 rounded-full transition-colors">Flowers</button>
-                        <button data-filter="nature" class="filter-btn font-medium text-gray-700 hover:text-primary py-2 px-4 rounded-full transition-colors">Nature</button>
-                        <button data-filter="cute" class="filter-btn font-medium text-gray-700 hover:text-primary py-2 px-4 rounded-full transition-colors">Cute</button>
-                        <button data-filter="artistic" class="filter-btn font-medium text-gray-700 hover:text-primary py-2 px-4 rounded-full transition-colors">Artistic</button>
+                <!-- Featured Gallery Section -->
+                <section id="gallery" class="py-20 bg-gray-50">
+                  <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                      <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-primary">Gallery</span></h2>
+                      <p class="text-gray-600 max-w-2xl mx-auto">Explore our popular visuals. Click an image to see more details.</p>
                     </div>
-                    <div id="masonry-gallery-container" class="masonry-grid">
+                    <div class="mb-8">
+                      <div class="flex flex-wrap justify-center gap-2 mb-8">
+                        <div class="bg-white rounded-full p-1 inline-flex shadow-sm">
+                          <button class="filter-btn active px-5 py-2 rounded-full text-white bg-primary transition-colors !whitespace-nowrap" data-filter="all">All</button>
+                          <button class="filter-btn px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors !whitespace-nowrap" data-filter="flowers">Flowers</button>
+                          <button class="filter-btn px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors !whitespace-nowrap" data-filter="nature">Nature</button>
+                          <button class="filter-btn px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors !whitespace-nowrap" data-filter="cute">Cute</button>
+                          <button class="filter-btn px-5 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors !whitespace-nowrap" data-filter="artistic">Artistic</button>
                         </div>
-                </div>
-            </section>
-        `,
-        about: `
-            <main id="about" class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-4">
-                    <div class="max-w-4xl mx-auto text-center">
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">About Celestial World</h1>
-                        <p class="text-lg text-gray-600 mb-12">Our mission is to provide a universe of stunning, high-quality images that inspire creativity and bring your projects to life.</p>
+                      </div>
+                      <div class="flex justify-end mb-6">
+                        <div class="flex items-center gap-3">
+                          <span class="text-sm text-gray-600">Grid View</span>
+                          <label class="custom-switch"> <input type="checkbox" id="view-toggle"> <span class="slider"></span></label>
+                          <span class="text-sm text-gray-600">Masonry</span>
+                        </div>
+                      </div>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <img src="images/about-us-image.jpg" alt="Team working" class="rounded-xl shadow-lg w-full">
-                        </div>
-                        <div>
-                            <h2 class="text-3xl font-bold text-gray-800 mb-4">Who We Are</h2>
-                            <p class="text-gray-600 mb-4">Celestial World started as a passion project by a small group of photographers and artists who wanted to share their work with the world. We believe that beautiful imagery should be accessible to everyone, from students and bloggers to professional designers and businesses.</p>
-                            <p class="text-gray-600">Every photo in our collection is carefully curated to ensure it meets our high standards of quality and artistic value. We specialize in capturing the beauty of nature, the elegance of flowers, the charm of cute moments, and the depth of artistic expression.</p>
-                        </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-grid">
+                      <!-- Gallery items will be dynamically inserted here by JavaScript -->
                     </div>
-                </div>
-                ${bannerAdTemplate}
+                    <div class="text-center mt-12">
+                      <button id="load-more" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 py-3 px-8 rounded-button font-medium transition-all shadow-sm hover:shadow !whitespace-nowrap">Load More</button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Newsletter Section -->
+                <!-- Make sure 'images/newsletter-bg.jpg' exists -->
+                <section class="py-20 relative overflow-hidden" style="background-image: url('images/newsletter-bg.jpg'); background-size: cover; background-position: center;">
+                  <div class="absolute inset-0 bg-black/50"></div>
+                  <div class="container mx-auto px-4 relative z-10">
+                    <div class="max-w-2xl mx-auto text-center">
+                      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Stay Updated</h2>
+                      <p class="text-white/80 mb-8">Subscribe to our newsletter to receive updates on new images, collections, and exclusive content.</p>
+                      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); showToast('Subscribed successfully!')">
+                        <input type="email" placeholder="Enter your email address" class="flex-grow px-4 py-3 rounded-button border-none focus:outline-none focus:ring-2 focus:ring-primary text-gray-800" required>
+                        <button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-button font-medium transition-all shadow-lg hover:shadow-xl !whitespace-nowrap">Subscribe</button>
+                      </form>
+                    </div>
+                  </div>
+                </section>
             </main>
         `,
         contact: `
-            <main id="contact" class="bg-gray-50">
-                <div class="container mx-auto px-4 py-16 md:py-24">
-                    <div class="max-w-3xl mx-auto text-center">
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Get In Touch</h1>
-                        <p class="text-lg text-gray-600 mb-12">We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.</p>
-                    </div>
-                    <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
-                        <form action="#" method="POST" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <main> <!-- padding-top will be applied by class to pageContentWrapper -->
+              <section id="contact-us" class="py-16 md:py-24">
+                <div class="container mx-auto px-4">
+                  <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In <span class="text-primary">Touch</span></h1>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                      We're here to help and answer any question you might have. We look forward to hearing from you!
+                    </p>
+                  </div>
+                  <div class="grid md:grid-cols-2 gap-10 items-start">
+                    <div class="bg-white p-8 rounded-xl shadow-xl">
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h2>
+                        <p class="text-gray-600 mb-6">
+                            Feel free to reach out to us through the form, or via the email listed below. Our team is available to assist you.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="ri-mail-send-line text-primary text-xl mr-3 mt-1 flex-shrink-0"></i>
                                 <div>
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-button border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
+                                    <span class="font-medium block">Email:</span>
+                                    <a href="mailto:celestialworldofficial@gmail.com" class="hover:text-primary break-all">celestialworldofficial@gmail.com</a>
                                 </div>
-                                <div>
-                                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-button border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
-                                </div>
+                            </li>
+                        </ul>
+                         <div class="mt-8 pt-6 border-t border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3">Follow Us</h3>
+                             <div class="flex space-x-4">
+                                <a href="https://in.pinterest.com/be_celestial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary text-gray-600 hover:text-white transition-colors"><i class="ri-instagram-line ri-lg"></i></a>
+                                <a href="https://in.pinterest.com/be_celestial/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary text-gray-600 hover:text-white transition-colors"><i class="ri-twitter-x-line ri-lg"></i></a>
+                                <a href="https://in.pinterest.com/be_celestial/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary text-gray-600 hover:text-white transition-colors"><i class="ri-pinterest-line ri-lg"></i></a>
+                                <a href="https://in.pinterest.com/be_celestial/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary text-gray-600 hover:text-white transition-colors"><i class="ri-facebook-line ri-lg"></i></a>
                             </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" name="email" id="email" autocomplete="email" class="mt-1 block w-full rounded-button border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-button border-gray-300 shadow-sm focus:border-primary focus:ring-primary"></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="bg-primary hover:bg-secondary text-white font-semibold py-3 px-8 rounded-full transition-all duration-300">
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+                    <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl">
+                      <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center md:text-left">Send Us a Message</h2>
+                      <div class="aspect-w-1 aspect-h-1 md:aspect-h-[1.5]">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLAiBnzUwnXH-jzbJmCsOauaAn1_-2608eyndC0HfQE8gYyQ/viewform?embedded=true" width="100%" height="1050" frameborder="0" marginheight="0" marginwidth="0" class="rounded-md">Loading…</iframe>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                ${bannerAdTemplate}
+              </section>
             </main>
         `,
-        'privacy-policy': `
-            <main id="privacy-policy" class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-4 prose lg:prose-xl max-w-4xl">
-                    <h1>Privacy Policy</h1>
-                    <p>Your privacy is important to us. It is Celestial World's policy to respect your privacy regarding any information we may collect from you across our website...</p>
-                    <h2>1. Information we collect</h2>
-                    <p>Log data, cookies, etc...</p>
-                    <h2>2. Use of information</h2>
-                    <p>We use the information we collect to operate and maintain our website...</p>
+        about: `
+            <main>
+              <section id="about-us" class="py-16 md:py-24">
+                <div class="container mx-auto px-4">
+                  <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About <span class="text-primary">Celestial World</span></h1>
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                      Welcome to Celestial World, your source for beautiful and inspiring imagery. We believe in the power of visuals to brighten your day and enhance your creative projects.
+                    </p>
+                  </div>
+                  <div class="prose lg:prose-xl mx-auto text-gray-700">
+                    <p>Our mission is to curate a stunning collection of high-quality images spanning various categories like vibrant flowers, serene nature scenes, adorable creatures, and artistic compositions. Whether you're a designer, blogger, student, or just someone who appreciates beauty, Celestial World aims to provide the perfect visual asset for your needs.</p>
+                    <p>We are passionate about photography and digital art, and we strive to offer a diverse gallery that sparks creativity and brings joy. Explore our collections, download your favorites, and let the Celestial World inspire you!</p>
+                    <p>Thank you for visiting!</p>
+                  </div>
                 </div>
-                ${bannerAdTemplate}
+              </section>
             </main>
         `,
-        'terms-of-service': `
-            <main id="terms-of-service" class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-4 prose lg:prose-xl max-w-4xl">
-                    <h1>Terms of Service</h1>
-                    <p>By accessing the website at Celestial World, you are agreeing to be bound by these terms of service, all applicable laws and regulations...</p>
-                    <h2>1. Use License</h2>
-                    <p>Permission is granted to temporarily download one copy of the materials (information or software) on Celestial World's website for personal, non-commercial transitory viewing only...</p>
+        privacy: `
+            <main>
+              <section id="privacy-policy" class="py-16 md:py-24">
+                <div class="container mx-auto px-4">
+                  <div class="max-w-4xl mx-auto mb-12 md:mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">Privacy <span class="text-primary">Policy</span></h1>
+                  </div>
+                  <div class="prose lg:prose-xl mx-auto text-gray-700">
+                    <p><strong>Last updated: [Current Date - User to Fill]</strong></p>
+                    <p>Celestial World ("us", "we", or "our") operates the Celestial World website (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+                    
+                    <h2>Information Collection and Use</h2>
+                    <p>We do not directly collect any personally identifiable information from visitors to our website for browsing purposes. If you use the embedded Google Form on our "Contact" page, the information you submit will be handled according to Google's Privacy Policy.</p>
+
+                    <h2>Log Data</h2>
+                    <p>Like many site operators, we may collect information that your browser sends whenever you visit our Service ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics. This data is typically collected by our hosting provider (GitHub Pages) for analytical purposes and is generally anonymous.</p>
+
+                    <h2>Cookies</h2>
+                    <p>Our website itself does not use cookies to track users. However, third-party services embedded on our site, such as Google Fonts, Tailwind CDN, or the Google Form, may use cookies. Please refer to their respective privacy policies for more information.</p>
+
+                    <h2>Changes to This Privacy Policy</h2>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, please contact us via the email address provided on our Contact page.</p>
+                  </div>
                 </div>
-                ${bannerAdTemplate}
+              </section>
+            </main>
+        `,
+        terms: `
+            <main>
+              <section id="terms-of-service" class="py-16 md:py-24">
+                <div class="container mx-auto px-4">
+                  <div class="max-w-4xl mx-auto mb-12 md:mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">Terms of <span class="text-primary">Service</span></h1>
+                  </div>
+                   <div class="prose lg:prose-xl mx-auto text-gray-700">
+                    <p><strong>Last updated: [Current Date - User to Fill]</strong></p>
+                    <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the Celestial World website (the "Service") operated by Celestial World ("us", "we", or "our").</p>
+                    <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
+                    <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+
+                    <h2>Content</h2>
+                    <p>The images and other content provided on Celestial World are for your personal, non-commercial use. You may download images for personal projects, inspiration, or as visual aids. Redistribution or resale of the images without appropriate licensing or permission is prohibited, especially if the images are not originally created by Celestial World.</p>
+                    <p>We strive to ensure that the content we provide is either our original work or used with permission. If you believe any content infringes on your copyright, please contact us.</p>
+
+                    <h2>Use of Service</h2>
+                    <p>You agree not to use the Service for any unlawful purpose or in any way that could damage, disable, overburden, or impair the Service.</p>
+
+                    <h2>Links To Other Web Sites</h2>
+                    <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Celestial World. Celestial World has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Celestial World shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+                    
+                    <h2>Changes</h2>
+                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will try to provide notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions about these Terms, please contact us.</p>
+                  </div>
+                </div>
+              </section>
             </main>
         `
     };
 
-    // --- Core Navigation and Page Loading Logic ---
-    function loadPage(pageName, filter = 'all') {
-        const pageId = pageName.startsWith('#') ? pageName.substring(1) : (pageName === 'index.html' ? 'home' : pageName);
-        const content = pageTemplates[pageId] || pageTemplates.home;
-
-        pageContentWrapper.innerHTML = content;
-        body.setAttribute('data-page', pageId);
-        window.scrollTo(0, 0);
-
-        if (pageId === 'home') {
-            setupHomepageScripts(filter);
-        } else {
-            // Setup scripts for other pages if any
+    // --- Helper Functions ---
+    function getCurrentPageType() {
+        const hash = window.location.hash.toLowerCase();
+        if (hash === '#contact') {
+            return 'contact';
         }
-        updateHeaderStyle(pageId);
-        setActiveNavLink(pageId);
-    }
-
-    function getPageFromHash() {
-        return window.location.hash || 'home';
-    }
-
-    function setupHomepageScripts(initialFilter) {
-        // Particles for hero section
-        const particlesContainer = document.querySelector('.hero-particles');
-        if (particlesContainer) {
-            for (let i = 0; i < 30; i++) {
-                let particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.width = particle.style.height = `${Math.random() * 3 + 1}px`;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDelay = `${Math.random() * 8}s`;
-                particlesContainer.appendChild(particle);
-            }
+        if (hash === '#about') {
+            return 'about';
         }
-        // Gallery setup
-        populateGallery(initialFilter);
-        setupGalleryFilters();
-        setupCategoryLinks();
-    }
-
-    // --- Gallery Logic ---
-    function populateGallery(filter) {
-        const galleryContainer = document.getElementById('masonry-gallery-container');
-        if (!galleryContainer) return;
-
-        galleryContainer.innerHTML = '';
-        const filteredItems = filter === 'all' ? allCelestialItems : allCelestialItems.filter(item => item.category === filter);
-
-        const inFeedAdTemplate = `
-            <div class="gallery-ad-item p-4">
-                <div class="ad-container-in-feed" style="text-align:center;">
-                  <img src="https://via.placeholder.com/300x250.png?text=In-Feed+Ad+300x250" alt="Advertisement" class="rounded-md">
-                </div>
-            </div>
-        `;
-
-        let galleryHtml = '';
-        for (let i = 0; i < filteredItems.length; i++) {
-            const item = filteredItems[i];
-            galleryHtml += `
-                <div class="gallery-item relative rounded-lg overflow-hidden group cursor-pointer" data-id="${item.id}">
-                    <img src="${item.src}" alt="${item.title}" class="w-full h-auto object-cover block">
-                    <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                        <h4 class="text-white font-semibold text-lg">${item.title}</h4>
-                        <p class="text-gray-300 text-sm">${item.description}</p>
-                    </div>
-                </div>`;
-            
-            // AD PLACEMENT 1: Inject In-Feed Ad after every 12th image
-            if ((i + 1) % 12 === 0) {
-                galleryHtml += inFeedAdTemplate;
-            }
+        if (hash === '#privacy-policy') {
+            return 'privacy';
         }
-        galleryContainer.innerHTML = galleryHtml;
-
-
-        // Add click listeners for modal
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => openImageModal(item.dataset.id));
-        });
-    }
-
-    function setupGalleryFilters() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-primary/10', 'text-primary'));
-                button.classList.add('active', 'bg-primary/10', 'text-primary');
-                populateGallery(button.dataset.filter);
-            });
-        });
-    }
-
-    function setupCategoryLinks() {
-        // For homepage category cards
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                const filter = card.dataset.filter;
-                document.querySelector(`button.filter-btn[data-filter="${filter}"]`).click();
-                document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // For footer filter links
-        document.querySelectorAll('.footer-filter-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const filter = link.dataset.filter;
-                loadPage('home', filter); // Reload home page with filter
-                setTimeout(() => {
-                  const gallerySection = document.getElementById('gallery');
-                  if (gallerySection) {
-                    document.querySelector(`button.filter-btn[data-filter="${filter}"]`).click();
-                    gallerySection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }, 100); // Small delay to ensure content is loaded
-            });
-        });
-    }
-
-    // --- Image Modal Logic ---
-    const modal = document.getElementById('image-modal');
-    function openImageModal(itemId) {
-        const item = allCelestialItems.find(i => i.id === itemId);
-        if (!item) return;
-
-        document.getElementById('modal-image').src = item.src;
-        document.getElementById('modal-title').innerText = item.title;
-        document.getElementById('modal-description').innerText = item.description;
-        
-        const tagsContainer = document.getElementById('modal-tags');
-        tagsContainer.innerHTML = item.tags.map(tag => `<span class="inline-block bg-gray-200 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">#${tag}</span>`).join(' ');
-
-        const downloadBtn = document.getElementById('modal-download-btn');
-        downloadBtn.onclick = () => {
-            const link = document.createElement('a');
-            link.href = item.src;
-            link.download = item.title.replace(/\s+/g, '_') + '.jpg';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showToast('Download started!');
-        };
-        
-        modal.classList.add('flex');
-    }
-    document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('flex'));
-    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('flex'); });
-
-    // --- Header and UI Logic ---
-    const header = document.getElementById('site-header');
-    const headerBgOverlay = document.getElementById('header-bg-overlay-dynamic');
-
-    function updateHeaderStyle(pageId) {
-        header.classList.remove('glassmorphism-light', 'glassmorphism-dark', 'header-bg-dark-scrolled');
-        headerBgOverlay.style.backgroundImage = '';
-        headerBgOverlay.style.opacity = '0';
-
-        if (pageId === 'home') {
-            header.classList.add('glassmorphism-light');
-            window.onscroll = () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-bg-dark-scrolled');
-                    header.classList.remove('glassmorphism-light');
-                } else {
-                    header.classList.remove('header-bg-dark-scrolled');
-                    header.classList.add('glassmorphism-light');
-                }
-            };
-        } else {
-            header.classList.add('glassmorphism-dark');
-            headerBgOverlay.style.backgroundImage = `url('images/contact-header-bg.jpg')`;
-            headerBgOverlay.style.opacity = '1';
-            window.onscroll = null; // Remove scroll listener for non-home pages
+        if (hash === '#terms-of-service') {
+            return 'terms';
         }
-    }
-    
-    function setActiveNavLink(pageId) {
-        document.querySelectorAll('.nav-item').forEach(link => {
-            const linkPage = (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#') ? 'home' : link.getAttribute('href').substring(1);
-            if (linkPage === pageId || (pageId === 'home' && (linkPage === 'categories' || linkPage === 'gallery'))) {
-                link.classList.add('nav-link-active');
-            } else {
-                link.classList.remove('nav-link-active');
-            }
-        });
+        // Default to home if no specific page hash, or if it's a section like #gallery
+        return 'home';
     }
 
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // --- Event Listeners for Navigation ---
-    document.body.addEventListener('click', function(e) {
-        // Handle clicks on internal nav links
-        if (e.target.matches('.nav-item')) {
-            e.preventDefault();
-            const href = e.target.getAttribute('href');
-            const pageId = (href === 'index.html' || href === '#') ? 'home' : href.substring(1);
-            
-            // If on a different page, load the homepage first then scroll
-            if (body.getAttribute('data-page') !== 'home' && (pageId === 'categories' || pageId === 'gallery')) {
-                loadPage('home');
-                 setTimeout(() => {
-                    const section = document.getElementById(pageId);
-                    if(section) section.scrollIntoView({ behavior: 'smooth' });
-                 }, 100);
-            } else if (pageId === 'home') {
-                loadPage(pageId);
-            } else if (pageTemplates[pageId]) {
-                loadPage(pageId);
-            } else { // For sections on the homepage
-                const section = document.getElementById(pageId);
-                if(section) section.scrollIntoView({ behavior: 'smooth' });
-            }
-            
-            // Close mobile menu after click
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        }
-    });
-
-    // --- CORRECTED: Search functionality ---
-    function performSearch() {
-        // This is a dummy search. In a real app, this would query a database or API.
-        const queryDesktop = document.getElementById('search-input-desktop').value.trim();
-        const queryMobile = document.getElementById('search-input-mobile').value.trim();
-        const query = queryDesktop || queryMobile;
-        
-        if (query) {
-            showToast(`Searching for: "${query}"`);
-            // Here you would filter 'allCelestialItems' and repopulate the gallery
-            const searchResults = allCelestialItems.filter(item => 
-                item.title.toLowerCase().includes(query.toLowerCase()) || 
-                item.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
-            );
-            
-            // To display results, we can reuse the gallery population logic
-            const galleryContainer = document.getElementById('masonry-gallery-container');
-            if (galleryContainer) {
-                // First, ensure we are on the gallery view
-                const gallerySection = document.getElementById('gallery');
-                if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth' });
-
-                galleryContainer.innerHTML = ''; // Clear current gallery
-                if(searchResults.length > 0) {
-                    let searchHtml = '';
-                    searchResults.forEach(item => {
-                        searchHtml += `
-                            <div class="gallery-item relative rounded-lg overflow-hidden group cursor-pointer" data-id="${item.id}">
-                                <img src="${item.src}" alt="${item.title}" class="w-full h-auto object-cover block">
-                                <div class="gallery-overlay absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                                    <h4 class="text-white font-semibold text-lg">${item.title}</h4>
-                                    <p class="text-gray-300 text-sm">${item.description}</p>
-                                </div>
-                            </div>`;
-                    });
-                    galleryContainer.innerHTML = searchHtml;
-                    document.querySelectorAll('.gallery-item').forEach(item => {
-                        item.addEventListener('click', () => openImageModal(item.dataset.id));
-                    });
-                } else {
-                    galleryContainer.innerHTML = `<p class="text-center text-gray-500 col-span-full">No results found for "${query}".</p>`;
-                }
-            } else {
-                // If not on the homepage, load it first then search
-                loadPage('home');
-                setTimeout(performSearch, 200); // Retry search after page load
-            }
-        }
-    }
-    document.getElementById('search-input-desktop').addEventListener('keydown', e => { if (e.key === 'Enter') performSearch(); });
-    document.getElementById('search-input-mobile').addEventListener('keydown', e => { if (e.key === 'Enter') performSearch(); });
-
-    // --- CORRECTED: Like button functionality ---
-    function handleLikeClick(e) {
-        e.preventDefault();
-        const icon = e.currentTarget.querySelector('i');
-        icon.classList.toggle('ri-heart-line');
-        icon.classList.toggle('ri-heart-fill');
-        icon.classList.toggle('text-red-500');
-        if (icon.classList.contains('ri-heart-fill')) {
-            showToast('Added to favorites!');
-        } else {
-            showToast('Removed from favorites.');
-        }
-    }
-    document.getElementById('header-like-button').addEventListener('click', handleLikeClick);
-    document.getElementById('mobile-like-button').addEventListener('click', handleLikeClick);
-    document.getElementById('modal-like-btn').addEventListener('click', handleLikeClick);
-    
-    // --- Toast notification ---
-    window.showToast = function(message) {
+    function showToast(message) {
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toast-message');
-        toastMessage.innerText = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
+        if (toast && toastMessage) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        // Expose to global scope if needed by inline HTML onclicks (like newsletter)
+        window.showToast = showToast;
+    }
+    showToast(''); // Initialize to expose it
+
+    // --- Header Logic ---
+    function setupHeader(currentPage) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') ?
+                '<i class="ri-menu-line ri-lg"></i>' : '<i class="ri-close-line ri-lg"></i>';
+        });
+
+        // --- UPDATED: Added Like Button Logic ---
+        const headerLikeButton = document.getElementById('header-like-button');
+        const mobileLikeButton = document.getElementById('mobile-like-button');
+
+        const likeButtonClickHandler = function(event) {
+            event.preventDefault(); // Prevent the link from navigating
+            const icon = this.querySelector('i');
+            if (icon) {
+                // The `toggleLike` function already exists and handles the logic.
+                // We call it with `isDirectClick = true` to enable the toast notification.
+                toggleLike(icon, false, true);
+            }
+        };
+
+        if (headerLikeButton) {
+            headerLikeButton.addEventListener('click', likeButtonClickHandler);
+        }
+        if (mobileLikeButton) {
+            mobileLikeButton.addEventListener('click', likeButtonClickHandler);
+        }
+        // --- END OF UPDATE ---
+
+        function updateHeaderStyle() {
+            const scrolled = window.scrollY > 50;
+            siteHeader.classList.remove('glassmorphism-light', 'glassmorphism-dark', 'header-bg-dark-scrolled');
+            
+            if (currentPage === 'home') {
+                headerBgOverlayDynamic.style.opacity = '0';
+                headerBgOverlayDynamic.style.backgroundImage = 'none'; // Ensure no bg image for home
+                if (scrolled) {
+                    siteHeader.classList.add('header-bg-dark-scrolled');
+                } else {
+                    siteHeader.classList.add('glassmorphism-light');
+                }
+            } else if (currentPage === 'contact' || currentPage === 'about' || currentPage === 'privacy' || currentPage === 'terms') {
+                // MODIFIED: Use hero-background.jpg for these pages' headers
+                const pageSpecificHeaderImage = 'images/hero-background.jpg'; 
+
+                if (scrolled) {
+                    siteHeader.classList.add('glassmorphism-dark');
+                    headerBgOverlayDynamic.style.opacity = '0'; // Hide image overlay when scrolled
+                } else {
+                    // Not scrolled, show the image overlay
+                    siteHeader.classList.remove('glassmorphism-dark'); // Ensure no dark glassmorphism if not scrolled
+                    headerBgOverlayDynamic.style.opacity = '1';
+                    headerBgOverlayDynamic.style.backgroundImage = `url('${pageSpecificHeaderImage}')`;
+                }
+            }
+        }
+        
+        updateHeaderStyle(); // Initial check
+        window.addEventListener('scroll', updateHeaderStyle);
+
+        // Active link highlighting
+        const currentHash = window.location.hash || "#"; 
+
+        document.querySelectorAll('header .nav-item, footer .nav-item, footer a.text-sm').forEach(link => {
+            link.classList.remove('nav-link-active');
+            const linkHref = link.getAttribute('href');
+            let linkIsForCurrentHash = false;
+
+            if ((linkHref === 'index.html' || linkHref === '#') && (currentHash === '#' || currentHash.startsWith('#categories') || currentHash.startsWith('#gallery'))) {
+                linkIsForCurrentHash = true;
+            }
+            else if (linkHref === currentHash) {
+                linkIsForCurrentHash = true;
+            }
+            else if (currentPage === 'home' && (linkHref === '#categories' || linkHref === '#gallery') && currentHash.startsWith(linkHref)) {
+                 linkIsForCurrentHash = true;
+            }
+
+
+            if (linkIsForCurrentHash) {
+                link.classList.add('nav-link-active');
+            }
+        });
+        
+        if (currentPage === 'contact') {
+            document.querySelectorAll('a[href="#contact"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
+        } else if (currentPage === 'about') {
+            document.querySelectorAll('a[href="#about"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
+        } else if (currentPage === 'privacy') {
+            document.querySelectorAll('a[href="#privacy-policy"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
+        } else if (currentPage === 'terms') {
+            document.querySelectorAll('a[href="#terms-of-service"]').forEach(cl => { cl.classList.remove('nav-link-active'); cl.classList.add('nav-link-active'); });
+        } else if (currentPage === 'home') { 
+             document.querySelectorAll('a[href="index.html"], a[href="#"]').forEach(homeLink => {
+                if(currentHash === '#' || currentHash.startsWith('#categories') || currentHash.startsWith('#gallery')){
+                    homeLink.classList.remove('nav-link-active');
+                    homeLink.classList.add('nav-link-active');
+                }
+            });
+        }
     }
 
-    // --- Custom cursor ---
-    const cursor = document.querySelector('.custom-cursor');
-    if (cursor) {
-        window.addEventListener('mousemove', e => {
+    // --- Custom Cursor Logic ---
+    function setupCustomCursor() {
+        const cursor = document.querySelector('.custom-cursor');
+        if (window.innerWidth <= 768 || !cursor) {
+            if(cursor) cursor.style.display = 'none';
+            return;
+        }
+        document.addEventListener('mousemove', e => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
-        document.querySelectorAll('a, button, input, .gallery-item, .category-card, .custom-switch').forEach(el => {
-            el.addEventListener('mouseover', () => cursor.classList.add('active'));
-            el.addEventListener('mouseout', () => cursor.classList.remove('active'));
+        document.addEventListener('mousedown', () => cursor.classList.add('active'));
+        document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+        
+        const interactiveElements = 'a, button, .gallery-item, .category-card, input, textarea, iframe, label, .custom-switch';
+        document.querySelectorAll(interactiveElements).forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
     }
 
-    // Initial page load
-    loadPage(getPageFromHash());
+    // --- Particles Logic (Homepage only) ---
+    function initParticles() {
+        const particlesContainer = document.getElementById('particles-container');
+        if (!particlesContainer) return;
+        particlesContainer.innerHTML = ''; // Clear existing if any
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 3 + 1;
+            particle.style.width = `${size}px`; particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`; particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 8}s`;
+            particle.style.animationDuration = `${Math.random() * 4 + 6}s`;
+            particlesContainer.appendChild(particle);
+        }
+    }
 
+    // --- Gallery Logic (Homepage only) ---
+    function initGallery() {
+        const galleryGrid = document.getElementById('gallery-grid');
+        if (!galleryGrid || typeof allCelestialItems === 'undefined') return;
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const viewToggle = document.getElementById('view-toggle');
+        const loadMoreBtn = document.getElementById('load-more');
+        const searchInputDesktop = document.getElementById('search-input-desktop');
+        const searchInputMobile = document.getElementById('search-input-mobile');
+        const categoryImageCountSpans = document.querySelectorAll('.image-count');
+        const categoryFilterLinks = document.querySelectorAll('.category-card .filter-link');
+        const footerFilterLinks = document.querySelectorAll('footer .footer-filter-link');
+
+
+        let itemsPerLoad = 12;
+        let currentFilter = 'all';
+        let displayedItemsCount = 0;
+        let currentSearchTerm = '';
+
+        function createImageElement(item) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'gallery-item relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white cursor-pointer';
+            itemDiv.setAttribute('data-category', item.category);
+            itemDiv.setAttribute('data-id', item.id);
+            let imgHeightClass = 'h-64';
+            if (viewToggle && viewToggle.checked) { // Masonry view
+                const randomFactor = ((item.id.charCodeAt(item.id.length -1) % 5) + 5 ); // Pseudo-random based on ID
+                imgHeightClass = `h-${56 + randomFactor * 4}`; // e.g. h-56, h-60, h-64, h-72, h-80, h-96
+            }
+            itemDiv.innerHTML = `
+              <img src="${item.src}" alt="${item.title}" class="w-full ${imgHeightClass} object-cover object-top">
+              <div class="gallery-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 class="text-white font-medium text-lg truncate">${item.title}</h3>
+                <p class="text-white/80 text-sm mb-3 truncate">${item.description}</p>
+                <div class="flex justify-between items-center">
+                  <div class="flex space-x-2">
+                    <button class="gallery-action-btn w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white" data-action="like" aria-label="Like image"><i class="ri-heart-line"></i></button>
+                    <button class="gallery-action-btn w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white" data-action="save" aria-label="Save to collection"><i class="ri-bookmark-line"></i></button>
+                    <button class="gallery-action-btn w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white" data-action="share" aria-label="Share image"><i class="ri-share-line"></i></button>
+                  </div>
+                  <button class="download-btn bg-primary hover:bg-primary/90 text-white py-1.5 px-4 rounded-button text-sm font-medium transition-colors !whitespace-nowrap" data-action="download" data-src="${item.src}" data-title="${item.title}">Download</button>
+                </div>
+              </div>`;
+            return itemDiv;
+        }
+
+        function renderGalleryItems(itemsToRender, append = false) {
+            if (!append) galleryGrid.innerHTML = '';
+            const fragment = document.createDocumentFragment();
+            itemsToRender.forEach(item => fragment.appendChild(createImageElement(item)));
+            galleryGrid.appendChild(fragment);
+            applyMasonryIfNeeded(); // Call this after adding items
+        }
+        
+        function applyMasonryIfNeeded() { // Renamed from applyMasonry
+            const items = galleryGrid.querySelectorAll('.gallery-item'); // Select items
+            const itemImages = galleryGrid.querySelectorAll('.gallery-item img'); // Select images within items
+
+            if (viewToggle && viewToggle.checked) {
+                galleryGrid.classList.remove('grid', 'grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4');
+                galleryGrid.classList.add('masonry-grid'); // Your custom class for masonry from CSS
+                // The heights are now set dynamically in createImageElement based on masonry state
+                // This function now mainly toggles the grid classes
+            } else {
+                galleryGrid.classList.remove('masonry-grid');
+                galleryGrid.classList.add('grid', 'grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'xl:grid-cols-4');
+                itemImages.forEach(img => {
+                    img.className = 'w-full h-64 object-cover object-top'; // Reset to default grid height
+                });
+            }
+        }
+
+
+        function getFilteredAndSearchedItems() {
+            let items = allCelestialItems;
+            if (currentFilter !== 'all') {
+                items = items.filter(item => item.category === currentFilter);
+            }
+            if (currentSearchTerm) {
+                const searchTerm = currentSearchTerm.toLowerCase();
+                items = items.filter(item =>
+                    item.title.toLowerCase().includes(searchTerm) ||
+                    item.description.toLowerCase().includes(searchTerm) ||
+                    (item.tags && item.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+                );
+            }
+            return items;
+        }
+
+        function displayItems() {
+            const filteredItems = getFilteredAndSearchedItems();
+            renderGalleryItems(filteredItems.slice(0, displayedItemsCount));
+            updateLoadMoreButton(filteredItems.length);
+        }
+
+        function loadInitialItems() {
+            displayedItemsCount = itemsPerLoad;
+            displayItems();
+        }
+        
+        function loadMoreAction() {
+            if(loadMoreBtn.disabled) return;
+            loadMoreBtn.innerHTML = '<div class="w-5 h-5 flex items-center justify-center mr-2"><i class="ri-loader-4-line animate-spin"></i></div> Loading...';
+            loadMoreBtn.disabled = true;
+            setTimeout(() => {
+                displayedItemsCount += itemsPerLoad;
+                displayItems(); // This will call renderGalleryItems which calls applyMasonryIfNeeded
+                loadMoreBtn.innerHTML = 'Load More';
+                loadMoreBtn.disabled = false;
+            }, 700); // Slightly reduced timeout
+        }
+
+        function updateLoadMoreButton(totalFilteredItems) {
+             if (loadMoreBtn) {
+                loadMoreBtn.style.display = (displayedItemsCount >= totalFilteredItems) ? 'none' : 'inline-block';
+            }
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary', 'text-white');
+                    btn.classList.add('text-gray-700', 'hover:bg-gray-100');
+                });
+                this.classList.add('active', 'bg-primary', 'text-white');
+                this.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                currentFilter = this.getAttribute('data-filter');
+                loadInitialItems();
+            });
+        });
+        
+        function triggerFilter(filterValue) {
+            const targetButton = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+            if (targetButton) {
+                targetButton.click(); 
+            }
+        }
+
+        categoryFilterLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                triggerFilter(this.dataset.filter);
+                const gallerySection = document.getElementById('gallery');
+                if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        footerFilterLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filterValue = this.dataset.filter;
+                if (getCurrentPageType() !== 'home') {
+                    window.location.href = `index.html#gallery?filter=${filterValue}`; 
+                } else {
+                    triggerFilter(filterValue);
+                    const gallerySection = document.getElementById('gallery');
+                    if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+
+        if (viewToggle) {
+            viewToggle.addEventListener('change', () => {
+                 // When toggle changes, we need to re-render items to apply correct heights if masonry is active
+                 // or reset heights if grid view is active.
+                 // The current displayItems() -> renderGalleryItems() -> createImageElement() -> applyMasonryIfNeeded() flow should handle this.
+                 displayItems(); // Re-render with current items but new view style
+            });
+        }
+        
+
+        if (loadMoreBtn) loadMoreBtn.addEventListener('click', loadMoreAction);
+
+        // Modal Logic
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalTagsContainer = document.getElementById('modal-tags');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalDownloadBtn = document.getElementById('modal-download-btn');
+        const modalLikeBtn = document.getElementById('modal-like-btn');
+        let currentModalItemId = null;
+
+        galleryGrid.addEventListener('click', function(e) {
+            const itemElement = e.target.closest('.gallery-item');
+            if (!itemElement) return;
+
+            const actionButton = e.target.closest('.gallery-action-btn, .download-btn');
+            const itemId = itemElement.getAttribute('data-id');
+            const itemData = allCelestialItems.find(i => i.id === itemId);
+
+            if (actionButton) {
+                e.stopPropagation(); // Prevent modal from opening if an action button is clicked
+                const action = actionButton.dataset.action;
+                if (action === 'like') toggleLike(actionButton.querySelector('i'), false, true);
+                else if (action === 'save') showToast('Image saved to collection!');
+                else if (action === 'share') showToast('Sharing options would appear here.');
+                else if (action === 'download') handleDownload(actionButton.dataset.src, actionButton.dataset.title);
+                return;
+            }
+            
+            if (itemData && modal && modalImage && modalTitle && modalDescription) {
+                currentModalItemId = itemData.id;
+                modalImage.src = itemData.src; modalImage.alt = itemData.title;
+                modalTitle.textContent = itemData.title; modalDescription.textContent = itemData.description;
+                modalTagsContainer.innerHTML = '';
+                if(itemData.tags && itemData.tags.length > 0) {
+                    itemData.tags.forEach(tag => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = 'inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2';
+                        tagEl.textContent = `#${tag}`;
+                        modalTagsContainer.appendChild(tagEl);
+                    });
+                }
+                modalDownloadBtn.onclick = () => handleDownload(itemData.src, itemData.title);
+                
+                const galleryItemLikeButtonIcon = itemElement.querySelector('.gallery-action-btn[data-action="like"] i');
+                modalLikeBtn.querySelector('i').className = galleryItemLikeButtonIcon ? galleryItemLikeButtonIcon.className : 'ri-heart-line';
+                if(galleryItemLikeButtonIcon && galleryItemLikeButtonIcon.classList.contains('text-red-500')){
+                    modalLikeBtn.querySelector('i').classList.add('text-red-500');
+                } else {
+                    modalLikeBtn.querySelector('i').classList.remove('text-red-500');
+                }
+
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        
+        function closeModal() {
+            if (modal) modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            currentModalItemId = null;
+        }
+
+        modalLikeBtn.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            const isNowLiked = toggleLike(icon, true, false); // Pass fromModal=true, isDirectClick=false
+            if (currentModalItemId) {
+                const galleryItemIcon = galleryGrid.querySelector(`.gallery-item[data-id="${currentModalItemId}"] .gallery-action-btn[data-action="like"] i`);
+                if (galleryItemIcon) toggleLike(galleryItemIcon, false, false, isNowLiked); // Sync gallery icon state
+            }
+            showToast(isNowLiked ? 'Liked!' : 'Unliked.');
+        });
+
+        function handleDownload(src, title) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = title ? `${title.replace(/\s+/g, '_')}.jpg` : 'celestial_image.jpg';
+            document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            showToast('Download started!');
+        }
+        
+        function handleSearchInput() {
+            currentSearchTerm = this.value;
+            loadInitialItems();
+        }
+        if(searchInputDesktop) searchInputDesktop.addEventListener('input', handleSearchInput);
+        if(searchInputMobile) searchInputMobile.addEventListener('input', handleSearchInput);
+
+        function updateCategoryCounts() {
+            categoryImageCountSpans.forEach(span => {
+                const category = span.dataset.category;
+                const count = allCelestialItems.filter(item => item.category === category).length;
+                span.textContent = `${count} images`;
+            });
+        }
+        
+        function checkHashForFilter() {
+            const hash = window.location.hash;
+            if (hash.includes('#gallery?filter=')) {
+                const filterValue = hash.split('filter=')[1];
+                if (filterValue) {
+                    triggerFilter(filterValue);
+                     const gallerySection = document.getElementById('gallery');
+                     if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+        
+        loadInitialItems();
+        updateCategoryCounts();
+        checkHashForFilter(); 
+    }
+
+    function toggleLike(iconElement, fromModal = false, isDirectClick = false, forceState) {
+        let currentLikedState = iconElement.classList.contains('ri-heart-fill');
+        let isNowLiked;
+
+        if (typeof forceState === 'boolean') { // If forceState is provided (true/false), use it
+            isNowLiked = forceState;
+        } else { // Otherwise, toggle current state
+            isNowLiked = !currentLikedState;
+        }
+
+        if (isNowLiked) {
+            iconElement.classList.remove('ri-heart-line');
+            iconElement.classList.add('ri-heart-fill', 'text-red-500');
+        } else {
+            iconElement.classList.remove('ri-heart-fill', 'text-red-500');
+            iconElement.classList.add('ri-heart-line');
+        }
+        
+        if (isDirectClick && !fromModal) { // Only show toast for direct clicks on gallery items, not modal syncs
+             showToast(isNowLiked ? 'Added to favorites' : 'Removed from favorites');
+        }
+        return isNowLiked; // Return the new state
+    }
+
+
+    // --- App Initialization ---
+    function initApp() {
+        const currentPage = getCurrentPageType();
+        bodyElement.setAttribute('data-page', currentPage);
+
+        let pageTitle = 'Celestial World - Beautiful Images';
+        if (currentPage === 'contact') {
+            pageTitle = 'Contact Us - Celestial World';
+        } else if (currentPage === 'about') {
+            pageTitle = 'About Us - Celestial World';
+        } else if (currentPage === 'privacy') {
+            pageTitle = 'Privacy Policy - Celestial World';
+        } else if (currentPage === 'terms') {
+            pageTitle = 'Terms of Service - Celestial World';
+        }
+        document.title = pageTitle;
+
+        pageContentWrapper.innerHTML = pageContentsHTML[currentPage] || pageContentsHTML.home;
+        
+        pageContentWrapper.classList.remove('contact-active', 'about-active', 'privacy-active', 'terms-active'); 
+        if (currentPage === 'contact') pageContentWrapper.classList.add('contact-active');
+        else if (currentPage === 'about') pageContentWrapper.classList.add('about-active');
+        else if (currentPage === 'privacy') pageContentWrapper.classList.add('privacy-active');
+        else if (currentPage === 'terms') pageContentWrapper.classList.add('terms-active');
+
+
+        setupHeader(currentPage); // Call setupHeader before specific page initializations
+        setupCustomCursor();
+        
+        if (currentPage === 'home') {
+            if (typeof initParticles === 'function') initParticles();
+            if (typeof initGallery === 'function') initGallery();
+        }
+
+        // Ensure smooth scrolling for hash links works after content is loaded
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Check if it's a "page" link or a true section link on the current page
+                if (href === "#" || pageContentsHTML[href.substring(1)]) {
+                    // This will be handled by hashchange and initApp
+                    return;
+                }
+                
+                // For section links on the same page (e.g. #gallery from home)
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement && (currentPage === 'home' || !pageContentsHTML[targetId])) { // Ensure it's a section on current page
+                    e.preventDefault();
+                    // Adjust for fixed header height if necessary
+                    const headerHeight = document.getElementById('site-header')?.offsetHeight || 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerHeight - 20; // 20px extra padding
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // Final call to setupHeader to ensure active links are correct after all processing
+        setupHeader(currentPage);
+    }
+    
+    window.addEventListener('hashchange', initApp);
+    initApp(); 
 });
 </script>
 
