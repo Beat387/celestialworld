@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial World</title>
+
+    <!-- Corrected Favicon Link -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <script>
@@ -252,7 +257,8 @@
           </div>
         </div>
         <div class="flex items-center space-x-4">
-          <a href="#" class="text-white hover:text-primary transition-colors">
+          <!-- UPDATED: Added id="header-like-button" -->
+          <a href="#" id="header-like-button" class="text-white hover:text-primary transition-colors">
             <div class="w-6 h-6 flex items-center justify-center">
               <i class="ri-heart-line"></i>
             </div>
@@ -280,7 +286,8 @@
         </div>
       </div>
        <div class="flex items-center space-x-4 mt-4">
-          <a href="#" class="text-white hover:text-primary transition-colors">
+          <!-- UPDATED: Added id="mobile-like-button" -->
+          <a href="#" id="mobile-like-button" class="text-white hover:text-primary transition-colors">
             <div class="w-6 h-6 flex items-center justify-center">
               <i class="ri-heart-line"></i>
             </div>
@@ -809,6 +816,28 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') ?
                 '<i class="ri-menu-line ri-lg"></i>' : '<i class="ri-close-line ri-lg"></i>';
         });
+
+        // --- UPDATED: Added Like Button Logic ---
+        const headerLikeButton = document.getElementById('header-like-button');
+        const mobileLikeButton = document.getElementById('mobile-like-button');
+
+        const likeButtonClickHandler = function(event) {
+            event.preventDefault(); // Prevent the link from navigating
+            const icon = this.querySelector('i');
+            if (icon) {
+                // The `toggleLike` function already exists and handles the logic.
+                // We call it with `isDirectClick = true` to enable the toast notification.
+                toggleLike(icon, false, true);
+            }
+        };
+
+        if (headerLikeButton) {
+            headerLikeButton.addEventListener('click', likeButtonClickHandler);
+        }
+        if (mobileLikeButton) {
+            mobileLikeButton.addEventListener('click', likeButtonClickHandler);
+        }
+        // --- END OF UPDATE ---
 
         function updateHeaderStyle() {
             const scrolled = window.scrollY > 50;
